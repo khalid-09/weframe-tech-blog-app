@@ -6,7 +6,9 @@ import BlogPagination from "./blog-pagination";
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 const TopBlog = async () => {
-  const allBlogs = await builder.getAll("blogs");
+  const allBlogs = await builder.getAll("blogs", {
+    query: { "data.category": "Blog" },
+  });
 
   const blogs = transformToBlogData(allBlogs);
 

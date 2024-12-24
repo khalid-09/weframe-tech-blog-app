@@ -9,5 +9,6 @@ export interface BlogData {
     authorName: string;
     tag: string[];
     timeToRead: number;
+    category: string;
   };
 }

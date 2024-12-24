@@ -12,6 +12,8 @@ export default {
       colors: {
         newsletter: "hsl(var(--newsletter))",
         mint: "hsl(var(--mint))",
+        surfaceNeutral: "hsl(var(--surface-neutral))",
+        surfaceWhite: "hsl(var(--surface-white))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

@@ -24,6 +24,7 @@ export const transformToBlogData = (blogs: BuilderContent[]): BlogData[] => {
         authorName: blog.data?.authorName || "Unknown Author",
         tag: blog.data?.tag || [],
         timeToRead: blog.data?.timeToRead || 0,
+        category: blog.data?.category || "Uncategorized",
       },
     }));
 };

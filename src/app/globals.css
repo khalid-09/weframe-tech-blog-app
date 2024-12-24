@@ -36,6 +36,8 @@ body {
     --newsletter: 230 21% 16%;
     --mint: 177 100% 39%;
     --secondary-text: 0 0% 35%;
+    --surface-neutral: 240 8% 95%;
+    --surface-white: 240 8% 95%;
   }
   .dark {
     --background: 0 0% 3.9%;

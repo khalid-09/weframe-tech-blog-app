@@ -1,4 +1,5 @@
 import { Poppins } from "next/font/google";
+import BlogHeading from "../blog-heading";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -8,9 +9,7 @@ const poppins = Poppins({
 const BlogHeader = () => {
   return (
     <div className="space-y-2.5">
-      <h5 className="text-center text-lg font-bold uppercase leading-6 tracking-[-0.6px] text-mint">
-        Blog
-      </h5>
+      <BlogHeading />
       <h1
         className={` ${poppins.className} text-6xl font-medium tracking-tight antialiased md:text-[5rem] md:leading-[5.313rem] md:tracking-[-0.325rem]`}
       >

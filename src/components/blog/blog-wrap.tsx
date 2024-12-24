@@ -6,7 +6,7 @@ const BlogWrap = () => {
   return (
     <div className="space-y-10">
       <div className="mx-auto flex max-w-[80.25rem] items-center justify-between">
-        <ul className="flex items-center gap-4 font-medium leading-5 tracking-[-0.48px] text-secondary-text">
+        <ul className="hidden items-center gap-4 font-medium leading-5 tracking-[-0.48px] text-secondary-text md:flex">
           <li>
             <Link href="/">View All</Link>
           </li>

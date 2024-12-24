@@ -12,11 +12,11 @@ const BlogHeader = () => {
         Blog
       </h5>
       <h1
-        className={` ${poppins.className} text-[5rem] font-medium leading-[5.313rem] tracking-[-0.325rem] antialiased`}
+        className={` ${poppins.className} text-6xl font-medium tracking-tight antialiased md:text-[5rem] md:leading-[5.313rem] md:tracking-[-0.325rem]`}
       >
         Explore our Knowledge Base
       </h1>
-      <p className="text-2xl leading-8 tracking-[-0.46px] text-secondary-text">
+      <p className="text-xl leading-8 tracking-[-0.46px] text-secondary-text md:text-2xl">
         Insights and resources for AI in healthcare
       </p>
     </div>

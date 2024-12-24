@@ -1,8 +1,12 @@
+import Hero from "@/sections/hero";
+
 const HomePage = () => {
   return (
-    <section>
-      <div className="text-4xl font-semibold">HomePage</div>
-    </section>
+    <>
+      <section className="space-y-[6.75rem] px-5 py-[6.5rem]">
+        <Hero />
+      </section>
+    </>
   );
 };
 

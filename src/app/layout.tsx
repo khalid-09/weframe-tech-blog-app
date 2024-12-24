@@ -1,21 +1,18 @@
-import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
-import SmoothScrolling from '@/components/smooth-scrolling';
+import type { Metadata } from "next";
+import "./globals.css";
+import SmoothScrolling from "@/components/smooth-scrolling";
+import NewsLetter from "@/components/newsletter";
+import Navbar from "@/components/header/navbar";
+import { Inter } from "next/font/google";
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: 'WeFrame Tech | Blog App',
-  description: 'A blog app built with Next.js and Builder.',
+  title: "WeFrame Tech | Blog App",
+  description: "A blog app built with Next.js and Builder.",
 };
 
 export default function RootLayout({
@@ -25,10 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.className} antialiased`}>
         <SmoothScrolling>
+          <NewsLetter />
+          <Navbar />
           <main>{children}</main>
         </SmoothScrolling>
       </body>

@@ -9,7 +9,7 @@ const poppins = Poppins({
 const BlogHeader = () => {
   return (
     <div className="space-y-2.5">
-      <BlogHeading />
+      <BlogHeading type="blog" />
       <h1
         className={` ${poppins.className} text-6xl font-medium tracking-tight antialiased md:text-[5rem] md:leading-[5.313rem] md:tracking-[-0.325rem]`}
       >

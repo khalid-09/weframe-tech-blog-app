@@ -1,4 +1,4 @@
-import { BlogData } from "@/types/blog";
+import { BlogData, FaqData } from "@/types/blog";
 import { BuilderContent } from "@builder.io/sdk";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -12,7 +12,7 @@ export const transformToBlogData = (blogs: BuilderContent[]): BlogData[] => {
     .filter(
       (blog): blog is BlogData =>
         blog.id !== undefined && blog.data?.title !== undefined,
-    ) // Type guard
+    )
     .map((blog) => ({
       id: blog.id!,
       name: blog.name || "Untitled",
@@ -25,6 +25,22 @@ export const transformToBlogData = (blogs: BuilderContent[]): BlogData[] => {
         tag: blog.data?.tag || [],
         timeToRead: blog.data?.timeToRead || 0,
         category: blog.data?.category || "Uncategorized",
+      },
+    }));
+};
+
+export const transformToFaqData = (faqs: BuilderContent[]): FaqData[] => {
+  return faqs
+    .filter(
+      (faq): faq is FaqData =>
+        faq.id !== undefined && faq.data?.question !== undefined,
+    )
+    .map((faq) => ({
+      id: faq.id!,
+      name: faq.name || "Untitled",
+      data: {
+        question: faq.data?.question || "No question",
+        answer: faq.data?.answer || "No answer",
       },
     }));
 };

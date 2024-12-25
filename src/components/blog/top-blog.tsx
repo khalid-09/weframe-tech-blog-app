@@ -7,6 +7,10 @@ builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 const TopBlog = async () => {
   const allBlogs = await builder.getAll("blogs", {
+    sort: {
+      createdDate: 1,
+    },
+    fields: "id,name,data",
     query: { "data.category": "Blog" },
   });
 

@@ -12,3 +12,12 @@ export interface BlogData {
     category: string;
   };
 }
+
+export interface FaqData {
+  id: string;
+  name: string;
+  data: {
+    question: string;
+    answer: string;
+  };
+}

@@ -1,3 +1,4 @@
+import FAQS from "@/sections/faqs";
 import Feature from "@/sections/feature";
 import Hero from "@/sections/hero";
 
@@ -12,6 +13,9 @@ const HomePage = () => {
       </section>
       <section className="space-y-20 px-10 pb-28 pt-32">
         <Feature category="case-studies" />
+      </section>
+      <section className="space-y-12 px-10 py-20">
+        <FAQS />
       </section>
     </>
   );

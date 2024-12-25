@@ -7,6 +7,7 @@ builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 const FeatureTop = async ({ category }: CategoryProps) => {
   const allFeatures = await builder.getAll("blogs", {
+    fields: "id,name,data",
     query: { "data.category": category },
   });
 

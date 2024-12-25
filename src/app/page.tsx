@@ -1,3 +1,4 @@
+import Testimonial from "@/components/testimonial";
 import FAQS from "@/sections/faqs";
 import Feature from "@/sections/feature";
 import Hero from "@/sections/hero";
@@ -17,6 +18,7 @@ const HomePage = () => {
       <section className="space-y-12 px-10 py-20">
         <FAQS />
       </section>
+      <Testimonial />
     </>
   );
 };

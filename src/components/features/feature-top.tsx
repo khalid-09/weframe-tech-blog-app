@@ -1,12 +1,13 @@
 import { builder } from "@builder.io/sdk";
 import { transformToBlogData } from "@/lib/utils";
 import FeatureCard from "./feature-card";
+import { CategoryProps } from "./feature-header";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-const FeatureTop = async () => {
+const FeatureTop = async ({ category }: CategoryProps) => {
   const allFeatures = await builder.getAll("blogs", {
-    query: { "data.category": "Insights" },
+    query: { "data.category": category },
   });
 
   const features = transformToBlogData(allFeatures);

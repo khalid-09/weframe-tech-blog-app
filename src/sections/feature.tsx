@@ -1,11 +1,15 @@
-import FeatureHeader from "@/components/features/feature-header";
+import FeatureHeader, {
+  CategoryProps,
+} from "@/components/features/feature-header";
 import FeatureTop from "@/components/features/feature-top";
+import ViewAllButton from "@/components/features/view-all-button";
 
-const Feature = () => {
+const Feature = ({ category }: CategoryProps) => {
   return (
     <>
-      <FeatureHeader />
-      <FeatureTop />
+      <FeatureHeader category={category} />
+      <FeatureTop category={category} />
+      {category === "case-studies" && <ViewAllButton />}
     </>
   );
 };

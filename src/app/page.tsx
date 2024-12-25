@@ -8,7 +8,10 @@ const HomePage = () => {
         <Hero />
       </section>
       <section className="space-y-20 bg-surfaceNeutral px-10 pb-28 pt-32">
-        <Feature />
+        <Feature category="insights" />
+      </section>
+      <section className="space-y-20 px-10 pb-28 pt-32">
+        <Feature category="case-studies" />
       </section>
     </>
   );

@@ -38,6 +38,7 @@ body {
     --secondary-text: 0 0% 35%;
     --surface-neutral: 240 8% 95%;
     --surface-white: 240 8% 95%;
+    --shade-grey: 0 0% 70%;
   }
   .dark {
     --background: 0 0% 3.9%;

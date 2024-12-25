@@ -4,6 +4,7 @@ import SmoothScrolling from "@/components/smooth-scrolling";
 import NewsLetter from "@/components/newsletter";
 import Navbar from "@/components/header/navbar";
 import { Inter } from "next/font/google";
+import CTA from "@/components/cta/cta";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
           <NewsLetter />
           <Navbar />
           <main>{children}</main>
+          <CTA />
         </SmoothScrolling>
       </body>
     </html>

@@ -2,6 +2,7 @@ import Testimonial from "@/components/testimonial";
 import FAQS from "@/sections/faqs";
 import Feature from "@/sections/feature";
 import Hero from "@/sections/hero";
+import CTA from "@/components/cta/cta";
 
 const HomePage = () => {
   return (

@@ -7,7 +7,7 @@ import { ThemeToggle } from "../theme-toggle";
 
 const Navbar = () => {
   return (
-    <nav className="flex max-h-[6.25rem] items-center justify-between border-[0.5px] border-b border-black border-opacity-30 px-6 py-4 md:px-10 md:py-6">
+    <nav className="flex max-h-[6.25rem] items-center justify-between border-[0.5px] border-b border-black border-opacity-30 bg-white px-6 py-4 md:px-10 md:py-6">
       <Image
         src={logo}
         alt="logo"

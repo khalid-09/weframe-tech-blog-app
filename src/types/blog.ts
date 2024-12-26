@@ -10,6 +10,7 @@ export interface BlogData {
     tag: string[];
     timeToRead: number;
     category: string;
+    slug: string;
   };
 }
 

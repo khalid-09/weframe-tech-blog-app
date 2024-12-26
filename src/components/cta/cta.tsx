@@ -4,7 +4,7 @@ import CTAInput from "./cta-input";
 
 const CTA = () => {
   return (
-    <section className="relative min-h-[53.083rem] w-full bg-black/20 px-10 py-[6.5rem]">
+    <section className="relative min-h-[53.083rem] w-full bg-black/20 px-10 py-[6.5rem] text-black">
       <Image src={bg} fill className="absolute -z-10 object-cover" alt="bg" />
 
       <div className="absolute inset-[6.5rem_2.5rem] space-y-24 rounded-xl bg-white px-8 py-[6.5rem] pt-36">
@@ -21,7 +21,7 @@ const CTA = () => {
         </div>
         <div className="mx-auto max-w-[42.313rem] space-y-2">
           <CTAInput />
-          <div className="text-shadeGrey tracking-[-0.5px]">
+          <div className="tracking-[-0.5px] text-shadeGrey">
             By submitting you agree to our privacy policy.
           </div>
         </div>

@@ -1,5 +1,8 @@
+import { cn } from "@/lib/utils";
 import { BlogData } from "@/types/blog";
 import Image from "next/image";
+import Link from "next/link";
+import AvatarImage from "../avatar-image";
 
 interface BlogCardProps {
   blog: BlogData;
@@ -15,11 +18,12 @@ const BlogCard = ({
       tag,
       title,
       description,
+      slug,
     },
   },
 }: BlogCardProps) => {
   return (
-    <div className="px-2 py-1.5 md:px-4 md:py-3">
+    <Link href={`blog/${slug}`} className="px-2 py-1.5 md:px-4 md:py-3">
       <div className="space-y-4">
         <div className="relative min-h-[17.563rem] max-w-[24.625rem] overflow-hidden rounded-xl">
           <Image
@@ -37,15 +41,7 @@ const BlogCard = ({
           {description}
         </p>
         <div className="flex items-center gap-4">
-          <div className="relative size-[2.625rem] overflow-hidden rounded-full">
-            <Image
-              quality={30}
-              src={avatar}
-              alt="avatar image"
-              fill
-              className="absolute object-cover"
-            />
-          </div>
+          <AvatarImage avatar={avatar} />
           <span className="font-medium leading-5 tracking-[-0.03rem] text-secondary-text">
             {authorName}
           </span>
@@ -57,7 +53,7 @@ const BlogCard = ({
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

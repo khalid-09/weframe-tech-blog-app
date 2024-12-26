@@ -1,6 +1,6 @@
 const Testimonial = () => {
   return (
-    <section className="px-8 py-[6.5rem]">
+    <section className="bg-white px-8 py-[6.5rem] text-black">
       <div className="mx-auto max-w-[66.25rem] space-y-11">
         <blockquote className="text-left">
           <p className="text-2xl leading-8 tracking-[-0.46px]">

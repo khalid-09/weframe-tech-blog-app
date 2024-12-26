@@ -25,6 +25,7 @@ export const transformToBlogData = (blogs: BuilderContent[]): BlogData[] => {
         tag: blog.data?.tag || [],
         timeToRead: blog.data?.timeToRead || 0,
         category: blog.data?.category || "Uncategorized",
+        slug: blog.data?.slug || `${blog.id}`,
       },
     }));
 };

@@ -1,7 +1,7 @@
 import { builder } from "@builder.io/sdk";
 import { transformToBlogData } from "@/lib/utils";
-import BlogCard from "./blog-card";
 import BlogPagination from "./blog-pagination";
+import BlogCard from "./blog-card";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 

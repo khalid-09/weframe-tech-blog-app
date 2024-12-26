@@ -5,6 +5,7 @@ import NewsLetter from "@/components/newsletter";
 import Navbar from "@/components/header/navbar";
 import { Inter } from "next/font/google";
 import CTA from "@/components/cta/cta";
+import Testimonial from "@/components/testimonial";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
           <NewsLetter />
           <Navbar />
           <main>{children}</main>
+          <Testimonial />
           <CTA />
         </SmoothScrolling>
       </body>

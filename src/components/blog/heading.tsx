@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import AvatarImage from "../avatar-image";
+import BlogUserDetails from "./blog-user-details";
 
 interface HeadingProps {
   title: string;
@@ -23,7 +23,7 @@ const Heading = ({
   const router = useRouter();
 
   const handleClick = () => {
-    router.back();
+    router.push("/");
   };
 
   return (
@@ -38,14 +38,12 @@ const Heading = ({
         <h1 className="text-[5rem] font-medium leading-[5.313rem] tracking-[-0.325rem]">
           {title}
         </h1>
-        <div className="flex w-full items-center justify-center gap-5">
-          <div className="flex items-center gap-2.5">
-            <AvatarImage avatar={avatarUrl} className="size-[3.15rem]" />
-            <span>{author}</span>
-          </div>
-          <span>{date}</span>
-          <span>{readingTime}</span>
-        </div>
+        <BlogUserDetails
+          author={author}
+          avatarUrl={avatarUrl}
+          date={date}
+          readingTime={readingTime}
+        />
       </div>
     </div>
   );

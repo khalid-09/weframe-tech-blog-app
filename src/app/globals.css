@@ -76,3 +76,13 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .content {
+    @apply w-full max-w-[75rem] grow-0 px-2.5;
+  }
+
+  .paragraph {
+    @apply mb-20 text-xl leading-8 tracking-[-0.4px] text-secondary-text;
+  }
+}

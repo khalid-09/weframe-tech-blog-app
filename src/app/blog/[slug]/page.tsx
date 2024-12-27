@@ -5,6 +5,7 @@ import BlogParagraph from "@/components/blog/blog-paragraph";
 import BlogSubHeading from "@/components/blog/blog-sub-heading";
 import BlogSubImage from "@/components/blog/blog-sub-image";
 import BlogTitle from "@/components/blog/blog-title";
+import RelatedPosts from "@/components/blog/related-posts";
 import { RenderBuilderContent } from "@/components/builder";
 import CaseStudies from "@/components/features/case-studies";
 import { builder } from "@builder.io/sdk";
@@ -14,6 +15,7 @@ interface BlogPageProps {
     slug: string;
   }>;
 }
+
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 const BlogPage = async ({ params }: BlogPageProps) => {
@@ -27,13 +29,10 @@ const BlogPage = async ({ params }: BlogPageProps) => {
     })
     .promise();
 
-  console.log(content.data.blocks[0]);
-
   return (
     <section className="px-10 py-16">
-      <div className="space-y-3">
-        <RenderBuilderContent content={content} model={builderModelName} />
-      </div>
+      <RenderBuilderContent content={content} model={builderModelName} />
+
       {/* <BlogInfo /> */}
       {/* <div className="mx-auto flex max-w-[1666px] gap-10">
         <div>

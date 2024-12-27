@@ -88,10 +88,6 @@ Builder.registerComponent(BlogTitle, {
         }]
 });
 
-Builder.registerComponent(RelatedPosts, {
-    name: "RelatedPosts"
-});
-
 Builder.registerComponent(BlogList, {
     name: "BlogList",
     inputs: [{
@@ -149,4 +145,8 @@ Builder.registerComponent(BlogInfo, {
             type: "string",
             required: true
         }]
+});
+
+Builder.registerComponent(RelatedPosts, {
+    name: "RelatedPosts"
 });

@@ -27,7 +27,7 @@ const Heading = ({
   };
 
   return (
-    <div className="mx-auto max-w-[75.125rem] space-y-6 py-4">
+    <div className="mx-auto mb-3 max-w-[75.125rem] space-y-6 py-4">
       <div>
         <p
           onClick={handleClick}

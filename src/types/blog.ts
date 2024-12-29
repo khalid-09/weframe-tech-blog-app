@@ -22,3 +22,7 @@ export interface FaqData {
     answer: string;
   };
 }
+
+export interface NewsLetter {
+  text: string;
+}

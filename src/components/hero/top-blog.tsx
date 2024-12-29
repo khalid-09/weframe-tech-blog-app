@@ -5,38 +5,77 @@ import { builder } from "@builder.io/sdk";
 import { transformToBlogData } from "@/lib/utils";
 import BlogGrid from "./blog-grid";
 import { BlogData } from "@/types/blog";
+import BlogSkeleton from "./blog-skeleton";
 
 const BLOGS_PER_PAGE = 9;
 
-const TopBlog = () => {
-  const [blogs, setBlogs] = useState<BlogData[]>([]);
+interface TopBlogProps {
+  searchQuery: string;
+  category: string;
+}
+
+const TopBlog = ({ searchQuery, category }: TopBlogProps) => {
+  const [allBlogs, setAllBlogs] = useState<BlogData[]>([]);
+  const [filteredBlogs, setFilteredBlogs] = useState<BlogData[]>([]);
   const [totalPages, setTotalPages] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const allBlogs = await builder.getAll("blogs", {
-        sort: {
-          createdDate: 1,
-        },
-        fields: "id,name,data",
-        query: { "data.category": "Blog" },
-      });
+      setIsLoading(true);
+      try {
+        const query = category === "all" ? {} : { "data.category": category };
+        const blogs = await builder.getAll("blogs", {
+          sort: {
+            createdDate: 1,
+          },
+          fields: "id,name,data",
+          query: { ...query },
+        });
 
-      const transformedBlogs = transformToBlogData(allBlogs);
-      setBlogs(transformedBlogs);
-      setTotalPages(Math.ceil(transformedBlogs.length / BLOGS_PER_PAGE));
+        const transformedBlogs = transformToBlogData(blogs);
+        setAllBlogs(transformedBlogs);
+        setFilteredBlogs(transformedBlogs);
+        setTotalPages(Math.ceil(transformedBlogs.length / BLOGS_PER_PAGE));
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchBlogs();
-  }, []);
+  }, [category]);
+
+  useEffect(() => {
+    const filtered = allBlogs.filter((blog) =>
+      blog.data.title.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+    setFilteredBlogs(filtered);
+    setTotalPages(Math.ceil(filtered.length / BLOGS_PER_PAGE));
+  }, [searchQuery, allBlogs]);
+
+  if (isLoading) {
+    return (
+      <div className="space-y-28">
+        <BlogSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-28">
-      <BlogGrid
-        blogs={blogs}
-        blogsPerPage={BLOGS_PER_PAGE}
-        totalPages={totalPages}
-      />
+      {filteredBlogs.length > 0 ? (
+        <BlogGrid
+          blogs={filteredBlogs}
+          blogsPerPage={BLOGS_PER_PAGE}
+          totalPages={totalPages}
+        />
+      ) : (
+        <div className="text-center text-gray-500">
+          <p>No blogs found matching your criteria.</p>
+        </div>
+      )}
     </div>
   );
 };

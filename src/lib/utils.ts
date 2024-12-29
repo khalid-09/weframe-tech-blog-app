@@ -1,4 +1,4 @@
-import { BlogData, FaqData } from "@/types/blog";
+import { BlogData, FaqData, NewsLetter } from "@/types/blog";
 import { BuilderContent } from "@builder.io/sdk";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -44,4 +44,22 @@ export const transformToFaqData = (faqs: BuilderContent[]): FaqData[] => {
         answer: faq.data?.answer || "No answer",
       },
     }));
+};
+
+export const transformToNewsLetterData = (
+  newsLetter: BuilderContent[],
+): NewsLetter => {
+  if (!newsLetter || newsLetter.length === 0) {
+    return {
+      text: "Subscribe to our Newsletter For New & latest Blogs and Resources",
+    };
+  }
+
+  const firstNewsletter = newsLetter[0];
+
+  return {
+    text:
+      firstNewsletter.data?.text ||
+      "Subscribe to our Newsletter For New & latest Blogs and Resources",
+  };
 };

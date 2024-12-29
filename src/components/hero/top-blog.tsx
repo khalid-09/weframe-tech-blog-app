@@ -1,32 +1,42 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { builder } from "@builder.io/sdk";
 import { transformToBlogData } from "@/lib/utils";
-import BlogPagination from "./blog-pagination";
-import BlogCard from "./blog-card";
+import BlogGrid from "./blog-grid";
+import { BlogData } from "@/types/blog";
 
-builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+const BLOGS_PER_PAGE = 9;
 
-const TopBlog = async () => {
-  const allBlogs = await builder.getAll("blogs", {
-    sort: {
-      createdDate: 1,
-    },
-    fields: "id,name,data",
-    query: { "data.category": "Blog" },
-  });
+const TopBlog = () => {
+  const [blogs, setBlogs] = useState<BlogData[]>([]);
+  const [totalPages, setTotalPages] = useState(0);
 
-  const blogs = transformToBlogData(allBlogs);
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const allBlogs = await builder.getAll("blogs", {
+        sort: {
+          createdDate: 1,
+        },
+        fields: "id,name,data",
+        query: { "data.category": "Blog" },
+      });
+
+      const transformedBlogs = transformToBlogData(allBlogs);
+      setBlogs(transformedBlogs);
+      setTotalPages(Math.ceil(transformedBlogs.length / BLOGS_PER_PAGE));
+    };
+
+    fetchBlogs();
+  }, []);
 
   return (
     <div className="space-y-28">
-      <div className="mx-auto grid max-w-[83.25rem] grid-cols-1 gap-2 md:grid-cols-3 md:gap-5">
-        {/* <div className="mx-auto flex max-w-[83.25rem] flex-wrap items-center gap-5"> */}
-        {blogs.map((blog) => (
-          <BlogCard key={blog.id} blog={blog} />
-        ))}
-      </div>
-      <div>
-        <BlogPagination />
-      </div>
+      <BlogGrid
+        blogs={blogs}
+        blogsPerPage={BLOGS_PER_PAGE}
+        totalPages={totalPages}
+      />
     </div>
   );
 };

@@ -1,4 +1,5 @@
-import { cn } from "@/lib/utils";
+"use client";
+
 import { BlogData } from "@/types/blog";
 import Image from "next/image";
 import Link from "next/link";

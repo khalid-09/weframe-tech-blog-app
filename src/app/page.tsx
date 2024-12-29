@@ -1,36 +1,15 @@
-import CaseStudies from "@/components/features/case-studies";
+import { builder } from "@builder.io/sdk";
+import { RenderBuilderContent } from "@/components/builder";
 import FAQS from "@/components/faqs/faqs";
-import Insights from "@/components/features/insights";
-import Hero from "@/components/hero/hero";
 
-// import { RenderBuilderContent } from "@/components/builder";
-// import { builder } from "@builder.io/sdk";
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-// builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
-
-// const HomePage = async () => {
-//   const builderModelName = "page";
-//   const content = await builder
-//     .get(builderModelName, {
-//       userAttributes: {
-//         urlPath: "/",
-//       },
-//     })
-//     .toPromise();
-
-//   return (
-//     <>
-//       <RenderBuilderContent content={content} model={builderModelName} />
-//     </>
-//   );
-// };
-
-const HomePage = () => {
+const HomePage = async () => {
+  const builderModelName = "blog-section";
+  const content = await builder.get(builderModelName).promise();
   return (
     <>
-      <Hero />
-      <Insights />
-      <CaseStudies />
+      <RenderBuilderContent content={content} model={builderModelName} />
       <FAQS />
     </>
   );

@@ -8,12 +8,14 @@ import { ThemeToggle } from "../theme-toggle";
 const Navbar = () => {
   return (
     <nav className="flex max-h-[6.25rem] items-center justify-between border-[0.5px] border-b border-black border-opacity-30 bg-white px-6 py-4 md:px-10 md:py-6">
-      <Image
-        src={logo}
-        alt="logo"
-        className="h-[3.875rem] w-[7.929rem]"
-        quality={50}
-      />
+      <Link href="/">
+        <Image
+          src={logo}
+          alt="logo"
+          className="h-[3.875rem] w-[7.929rem]"
+          quality={50}
+        />
+      </Link>
       <ul className="hidden items-center gap-10 font-medium text-secondary-text md:flex">
         <li className="leading-5 tracking-[-0.48px] transition duration-300 hover:scale-105">
           <Link href="/">AI Consulting</Link>

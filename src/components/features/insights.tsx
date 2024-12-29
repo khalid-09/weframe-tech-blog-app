@@ -1,3 +1,5 @@
+"use client";
+
 import Feature from "@/components/features/feature";
 
 const Insights = () => {

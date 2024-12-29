@@ -23,6 +23,15 @@ export interface FaqData {
   };
 }
 
+export interface NavLinks {
+  id: string;
+  name: string;
+  data: {
+    name: string;
+    link: string;
+  };
+}
+
 export interface NewsLetter {
   text: string;
 }

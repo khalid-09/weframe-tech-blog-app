@@ -82,6 +82,10 @@ body {
     @apply w-full max-w-[75rem] grow-0 px-2.5;
   }
 
+  .related {
+    @apply w-full max-w-[26.625rem];
+  }
+
   .paragraph {
     @apply mb-20 text-xl leading-8 tracking-[-0.4px] text-secondary-text;
   }

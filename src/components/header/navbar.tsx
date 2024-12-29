@@ -4,8 +4,21 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
 import { ThemeToggle } from "../theme-toggle";
+import { builder } from "@builder.io/sdk";
+import { cn, transformToNavLinksData } from "@/lib/utils";
 
-const Navbar = () => {
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+
+const Navbar = async () => {
+  const allNavLinks = await builder.getAll("nav-links", {
+    sort: {
+      createdDate: 1,
+    },
+    fields: "id,name,data",
+  });
+
+  const navLinks = transformToNavLinksData(allNavLinks);
+
   return (
     <nav className="flex max-h-[6.25rem] items-center justify-between border-[0.5px] border-b border-black border-opacity-30 bg-white px-6 py-4 md:px-10 md:py-6">
       <Link href="/">
@@ -17,21 +30,24 @@ const Navbar = () => {
         />
       </Link>
       <ul className="hidden items-center gap-10 font-medium text-secondary-text md:flex">
-        <li className="leading-5 tracking-[-0.48px] transition duration-300 hover:scale-105">
-          <Link href="/">AI Consulting</Link>
-        </li>
-        <li className="leading-5 tracking-[-0.48px] transition duration-300 hover:scale-105">
-          <Link href="/">AI Toolbox</Link>
-        </li>
-        <li className="leading-5 tracking-[-0.48px] transition duration-300 hover:scale-105">
-          <Link href="/">Content Health</Link>
-        </li>
-        <li className="leading-5 tracking-[-0.48px] transition duration-300 hover:scale-105">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <span>Resources</span>
-            <ChevronDown size={18} />
-          </Link>
-        </li>
+        {navLinks.map((navLink) => (
+          <li
+            key={navLink.id}
+            className="leading-5 tracking-[-0.48px] transition duration-300 hover:scale-105"
+          >
+            <Link
+              href={navLink.data.link}
+              className={cn(
+                "",
+                navLink.data.name === "Resources" &&
+                  "inline-flex items-center gap-2",
+              )}
+            >
+              <span>{navLink.data.name}</span>
+              {navLink.data.name === "Resources" && <ChevronDown size={18} />}
+            </Link>
+          </li>
+        ))}
       </ul>
       <div className="gap hidden items-center gap-6 md:flex">
         <div className="space-x-3">

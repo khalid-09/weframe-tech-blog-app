@@ -12,7 +12,10 @@ import CaseStudies from "./components/features/case-studies";
 import Heading from "./components/blog/heading";
 import Hero from "./components/hero/hero";
 import Insights from "./components/features/insights";
+import RelatedPost from "./components/blog/related-post";
+import RelatedPostNewsletter from "./components/blog/related-post-newsletter";
 import RelatedPosts from "./components/blog/related-posts";
+import RelatedPostTitle from "./components/blog/related-post-title";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -144,10 +147,6 @@ Builder.registerComponent(BlogInfo, {
   ],
 });
 
-Builder.registerComponent(RelatedPosts, {
-  name: "RelatedPosts",
-});
-
 Builder.registerComponent(Heading, {
   name: "Heading",
   inputs: [
@@ -197,4 +196,77 @@ Builder.registerComponent(Insights, {
 
 Builder.registerComponent(CaseStudies, {
   name: "CaseStudies",
+});
+
+Builder.registerComponent(RelatedPost, {
+  name: "RelatedPost",
+  inputs: [
+    {
+      name: "author",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "description",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "imageUrl",
+      type: "file",
+      required: true,
+    },
+    {
+      name: "tag",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "timeToRead",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "title",
+      type: "string",
+      required: true,
+    },
+  ],
+});
+
+Builder.registerComponent(RelatedPostNewsletter, {
+  name: "RelatedPostNewsletter",
+  inputs: [
+    {
+      name: "buttonText",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "description",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "placeholder",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "text",
+      type: "string",
+      required: true,
+    },
+  ],
+});
+
+Builder.registerComponent(RelatedPostTitle, {
+  name: "RelatedPostTitle",
+  inputs: [
+    {
+      name: "text",
+      type: "string",
+      required: true,
+    },
+  ],
 });

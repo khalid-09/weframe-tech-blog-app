@@ -1,4 +1,4 @@
-import { BlogData, FaqData, NewsLetter } from "@/types/blog";
+import { BlogData, FaqData, NavLinks, NewsLetter } from "@/types/blog";
 import { BuilderContent } from "@builder.io/sdk";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -42,6 +42,24 @@ export const transformToFaqData = (faqs: BuilderContent[]): FaqData[] => {
       data: {
         question: faq.data?.question || "No question",
         answer: faq.data?.answer || "No answer",
+      },
+    }));
+};
+
+export const transformToNavLinksData = (
+  navLinks: BuilderContent[],
+): NavLinks[] => {
+  return navLinks
+    .filter(
+      (navLink): navLink is NavLinks =>
+        navLink.id !== undefined && navLink.data?.name !== undefined,
+    )
+    .map((navLink) => ({
+      id: navLink.id!,
+      name: navLink.name || "Untitled",
+      data: {
+        name: navLink.data?.name || "No name",
+        link: navLink.data?.link || "#",
       },
     }));
 };

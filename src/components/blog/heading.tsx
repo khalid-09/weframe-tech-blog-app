@@ -18,7 +18,7 @@ const Heading = ({
   date = "11 Nov 2024",
   readingTime = "12 mins",
   avatarUrl = "https://cdn.builder.io/api/v1/image/assets%2F76cb628f6d0c4bb38273da6779617caf%2F0c75df2bd5f943398608b5f7c35ad77b",
-  backText = "< ALL POST",
+  backText = "< ALL POSTS",
 }: HeadingProps) => {
   const router = useRouter();
 
@@ -27,7 +27,7 @@ const Heading = ({
   };
 
   return (
-    <div className="mx-auto mb-3 max-w-[75.125rem] space-y-6 py-4">
+    <div className="mx-auto mb-3 w-full max-w-[75rem] space-y-6 py-4">
       <div>
         <p
           onClick={handleClick}

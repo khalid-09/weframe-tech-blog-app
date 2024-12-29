@@ -3,15 +3,15 @@ import { Input } from "../ui/input";
 
 const RelatedPosts = () => {
   return (
-    <div className="w-full max-w-[26.625rem]">
-      <h4 className="mb-6 text-3xl font-bold tracking-[-0.5px]">
+    <>
+      <h4 className="mb-6 w-full max-w-[26.625rem] text-3xl font-bold tracking-[-0.5px]">
         Related Posts
       </h4>
-      <div className="space-y-4">
+      <div className="">
         {Array.from({ length: 3 }).map((_, index) => (
           <div
             key={index}
-            className="space-y-4 rounded-xl bg-surfaceNeutral px-6 py-5"
+            className="mb-4 w-full max-w-[26.625rem] space-y-4 rounded-xl bg-surfaceNeutral px-6 py-5"
           >
             <h6 className="text-xl font-semibold tracking-[-0.6px]">
               Unlocking AI&apos;s potential in AI Healthcare
@@ -37,7 +37,7 @@ const RelatedPosts = () => {
           </div>
         ))}
       </div>
-      <div className="mt-20 space-y-6 px-4 py-5">
+      <div className="mt-16 w-full max-w-[26.625rem] space-y-6 px-4 py-5">
         <div className="space-y-4">
           <h5 className="text-3xl font-bold leading-10 tracking-[0.5px]">
             Weframe Tech News Weekly
@@ -58,7 +58,7 @@ const RelatedPosts = () => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

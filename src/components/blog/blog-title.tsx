@@ -4,7 +4,7 @@ interface BlogTitleProps {
 
 const BlogTitle = ({ text = "Introduction" }: BlogTitleProps) => {
   return (
-    <h3 className="content mb-6 text-5xl font-bold leading-[3.75rem] tracking-[-2px]">
+    <h3 className="mb-6 w-full max-w-[75rem] text-5xl font-bold leading-[3.75rem] tracking-[-2px]">
       {text}
     </h3>
   );

@@ -30,7 +30,7 @@ const BlogInfo = ({
   link = "",
 }: BlogInfoProps) => {
   return (
-    <div className="content flex items-center justify-between gap-4">
+    <div className="flex w-full max-w-[75rem] items-center justify-between gap-4">
       <div className="flex w-full items-center gap-6">
         <BlogUserDetails
           avatarUrl={avatarUrl}

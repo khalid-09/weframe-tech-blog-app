@@ -24,7 +24,7 @@ const FAQSAccordion = ({
                 {faq.data.question}
               </span>
             </AccordionTrigger>
-            <AccordionContent className="max-w-[68.125rem] p-8 pt-0 text-sm leading-6 tracking-[-0.5px] text-secondary-text smCustom:p-6">
+            <AccordionContent className="max-w-[68.125rem] p-8 pt-0 leading-6 tracking-[-0.5px] text-secondary-text smCustom:p-6 smCustom:text-sm">
               {faq.data.answer}
             </AccordionContent>
           </AccordionItem>

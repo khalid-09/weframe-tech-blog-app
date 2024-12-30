@@ -2,6 +2,7 @@ import {
   BlogData,
   BlogDataNew,
   FaqData,
+  FooterData,
   NavLinks,
   NewsLetter,
 } from "@/types/blog";
@@ -111,4 +112,22 @@ export const transformToNewsLetterData = (
       firstNewsletter.data?.text ||
       "Subscribe to our Newsletter For New & latest Blogs and Resources",
   };
+};
+
+export const transformToFooterData = (
+  footerData: BuilderContent[],
+): FooterData[] => {
+  return footerData
+    .filter(
+      (footer): footer is FooterData =>
+        footer.id !== undefined && footer.data?.linkHeading !== undefined,
+    )
+    .map((footer) => ({
+      id: footer.id!,
+      name: footer.name || "Untitled",
+      data: {
+        linkHeading: footer.data?.linkHeading || "No link heading",
+        linkSubLinks: footer.data?.linkSubLinks || [],
+      },
+    }));
 };

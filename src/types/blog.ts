@@ -51,3 +51,15 @@ export interface NavLinks {
 export interface NewsLetter {
   text: string;
 }
+
+export interface FooterData {
+  id: string;
+  name: string;
+  data: {
+    linkHeading: string;
+    linkSubLinks: {
+      linkName: string;
+      link: string;
+    }[];
+  };
+}

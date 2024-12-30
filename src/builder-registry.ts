@@ -15,6 +15,7 @@ import Insights from "./components/features/insights";
 import RelatedPost from "./components/blog/related-post";
 import RelatedPostNewsletter from "./components/blog/related-post-newsletter";
 import RelatedPostTitle from "./components/blog/related-post-title";
+import RelatedPosts from "./components/blog/related-posts";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -287,42 +288,6 @@ Builder.registerComponent(CaseStudies, {
   ],
 });
 
-Builder.registerComponent(RelatedPost, {
-  name: "RelatedPost",
-  inputs: [
-    {
-      name: "author",
-      type: "string",
-      required: true,
-    },
-    {
-      name: "description",
-      type: "string",
-      required: true,
-    },
-    {
-      name: "imageUrl",
-      type: "file",
-      required: true,
-    },
-    {
-      name: "tag",
-      type: "string",
-      required: true,
-    },
-    {
-      name: "timeToRead",
-      type: "string",
-      required: true,
-    },
-    {
-      name: "title",
-      type: "string",
-      required: true,
-    },
-  ],
-});
-
 Builder.registerComponent(RelatedPostNewsletter, {
   name: "RelatedPostNewsletter",
   inputs: [
@@ -356,6 +321,27 @@ Builder.registerComponent(RelatedPostTitle, {
       name: "text",
       type: "string",
       required: true,
+    },
+  ],
+});
+
+Builder.registerComponent(RelatedPosts, {
+  name: "RelatedPosts",
+  inputs: [
+    {
+      name: "blogSelections",
+      type: "list",
+      subFields: [
+        {
+          name: "blogRef",
+          type: "reference",
+          model: "blogs",
+          friendlyName: "Select Blog",
+        },
+      ],
+      defaultValue: [],
+      friendlyName: "Blog Selections",
+      helperText: "Add blogs to display in this section",
     },
   ],
 });

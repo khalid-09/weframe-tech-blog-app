@@ -6,7 +6,7 @@ interface BuilderReference {
   model: string;
 }
 
-interface BlogSelection {
+export interface BlogSelection {
   blogRef: BuilderReference;
 }
 

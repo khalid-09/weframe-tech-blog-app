@@ -1,12 +1,12 @@
 import AvatarImage from "../avatar-image";
 
-interface RelatedPostProps {
+export interface RelatedPostProps {
   imageUrl: string;
   title: string;
   description: string;
   author: string;
   tag: string;
-  timeToRead: string;
+  timeToRead: number;
 }
 
 const RelatedPost = ({
@@ -15,7 +15,7 @@ const RelatedPost = ({
   description = "Our Ai Hackathons are intensive, collaborative sessions that spark Innovation",
   author = "Bernd Holbein",
   tag = "Insights",
-  timeToRead = "12 mins",
+  timeToRead = 12,
 }: RelatedPostProps) => {
   return (
     <div className="mb-4 w-full max-w-[26.625rem] space-y-4 rounded-xl bg-surfaceNeutral px-6 py-5">
@@ -32,7 +32,7 @@ const RelatedPost = ({
           {tag}
         </span>
         <span className="font-medium tracking-[-0.48px] text-secondary-text">
-          {timeToRead}
+          {timeToRead} mins
         </span>
       </div>
     </div>

@@ -1,9 +1,9 @@
 import { z } from "zod";
 
-export const relatedFormSchema = z.object({
+export const emailSchema = z.object({
   email: z
     .string({ required_error: "Email should be a string" })
     .email({ message: "Invalid email address" }),
 });
 
-export type RelatedFormSchema = z.infer<typeof relatedFormSchema>;
+export type EmailSchema = z.infer<typeof emailSchema>;

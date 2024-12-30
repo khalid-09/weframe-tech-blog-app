@@ -6,6 +6,7 @@ import Navbar from "@/components/header/navbar";
 import { Inter } from "next/font/google";
 import CTA from "@/components/cta/cta";
 import Testimonial from "@/components/testimonial";
+import Footer from "@/components/footer/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Testimonial />
           <CTA />
+          <Footer />
         </SmoothScrolling>
       </body>
     </html>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import bg from "../../../public/bg.jpeg";
-import CTAInput from "./cta-input";
+import CTAInput from "./cta-form";
 
 const CTA = () => {
   return (

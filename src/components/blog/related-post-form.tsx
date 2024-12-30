@@ -11,10 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  RelatedFormSchema,
-  relatedFormSchema,
-} from "@/lib/validation/related-form";
+import { emailSchema, EmailSchema } from "@/lib/validation/related-form";
 
 interface RelatedPostFormProps {
   placeholder: string;
@@ -22,14 +19,14 @@ interface RelatedPostFormProps {
 }
 
 const RelatedPostForm = ({ buttonText, placeholder }: RelatedPostFormProps) => {
-  const form = useForm<RelatedFormSchema>({
-    resolver: zodResolver(relatedFormSchema),
+  const form = useForm<EmailSchema>({
+    resolver: zodResolver(emailSchema),
     defaultValues: {
       email: "",
     },
   });
 
-  const onSubmit = (data: RelatedFormSchema) => {
+  const onSubmit = (data: EmailSchema) => {
     console.log(data);
     form.reset();
   };

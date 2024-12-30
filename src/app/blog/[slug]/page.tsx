@@ -1,5 +1,4 @@
 import { RenderBuilderContent } from "@/components/builder";
-import CaseStudies from "@/components/features/case-studies";
 import { builder } from "@builder.io/sdk";
 
 interface BlogPageProps {
@@ -24,7 +23,6 @@ const BlogPage = async ({ params }: BlogPageProps) => {
   return (
     <section className="px-10 py-16">
       <RenderBuilderContent content={content} model={builderModelName} />
-      <CaseStudies />
     </section>
   );
 };

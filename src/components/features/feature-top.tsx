@@ -1,31 +1,37 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { builder } from "@builder.io/sdk";
 import { transformToBlogData } from "@/lib/utils";
 import FeatureCard from "./feature-card";
-import { CategoryProps } from "./feature-header";
-import ViewAllButton from "./view-all-button";
+import { builder } from "@builder.io/sdk";
 import { BlogData } from "@/types/blog";
+import { useEffect, useState } from "react";
+import ViewAllButton from "./view-all-button";
+import { CategoryProps } from "./feature-header";
 
-const FeatureTop = ({ category }: CategoryProps) => {
+interface FeatureTopProps extends CategoryProps {
+  selectedBlogIds: string[];
+}
+
+const FeatureTop = ({ category, selectedBlogIds }: FeatureTopProps) => {
   const [features, setFeatures] = useState<BlogData[]>([]);
-  const [totalFeatures, setTotalFeatures] = useState(0);
 
   useEffect(() => {
     const fetchFeatures = async () => {
-      const allFeatures = await builder.getAll("blogs", {
+      if (!selectedBlogIds.length) return;
+
+      const selectedFeatures = await builder.getAll("blogs", {
         fields: "id,name,data",
-        query: { "data.category": category },
+        query: {
+          id: { $in: selectedBlogIds },
+        },
       });
 
-      const transformedFeatures = transformToBlogData(allFeatures);
-      setFeatures(transformedFeatures.slice(0, 3));
-      setTotalFeatures(allFeatures.length);
+      const transformedFeatures = transformToBlogData(selectedFeatures);
+      setFeatures(transformedFeatures);
     };
 
     fetchFeatures();
-  }, [category]);
+  }, [selectedBlogIds]);
 
   return (
     <>
@@ -34,11 +40,7 @@ const FeatureTop = ({ category }: CategoryProps) => {
           <FeatureCard key={feature.id} blog={feature} />
         ))}
       </div>
-      {totalFeatures > 3 && (
-        <div className="mx-auto mt-20">
-          <ViewAllButton />
-        </div>
-      )}
+      {category === "case-studies" && features.length > 3 && <ViewAllButton />}
     </>
   );
 };

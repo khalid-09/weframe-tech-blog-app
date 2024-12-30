@@ -9,7 +9,7 @@ interface FeatureCardProps {
 
 const FeatureCard = ({
   blog: {
-    data: { tag, displayImage, timeToRead, title, description },
+    data: { tag, displayImage, timeToRead, title, description, slug },
   },
 }: FeatureCardProps) => {
   return (
@@ -37,7 +37,10 @@ const FeatureCard = ({
         <p className="leading-6 tracking-[-0.5px] text-secondary-text opacity-80">
           {description}
         </p>
-        <Link href="/" className="flex items-center gap-2 text-mint">
+        <Link
+          href={`/blog/${slug}`}
+          className="flex items-center gap-2 text-mint"
+        >
           <span className="font-medium tracking-[-0.48px] underline underline-offset-4">
             Read more
           </span>

@@ -1,4 +1,10 @@
-import { BlogData, FaqData, NavLinks, NewsLetter } from "@/types/blog";
+import {
+  BlogData,
+  BlogDataNew,
+  FaqData,
+  NavLinks,
+  NewsLetter,
+} from "@/types/blog";
 import { BuilderContent } from "@builder.io/sdk";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -24,6 +30,31 @@ export const transformToBlogData = (blogs: BuilderContent[]): BlogData[] => {
         authorName: blog.data?.authorName || "Unknown Author",
         tag: blog.data?.tag || [],
         timeToRead: blog.data?.timeToRead || 0,
+        category: blog.data?.category || "Uncategorized",
+        slug: blog.data?.slug || `${blog.id}`,
+      },
+    }));
+};
+
+export const transformToNewBlogData = (
+  blogs: BuilderContent[],
+): BlogDataNew[] => {
+  return blogs
+    .filter(
+      (blog): blog is BlogDataNew =>
+        blog.id !== undefined && blog.data?.title !== undefined,
+    )
+    .map((blog) => ({
+      id: blog.id!,
+      name: blog.name || "Untitled",
+      data: {
+        displayImage: blog.data?.displayImage || "",
+        title: blog.data?.title || "No title",
+        description: blog.data?.description || "No description",
+        avatar: blog.data?.avatar || "",
+        authorName: blog.data?.authorName || "Unknown Author",
+        tag: blog.data?.tag || "Ai Healthcare",
+        timeToRead: blog.data?.timeToRead || "5 mins",
         category: blog.data?.category || "Uncategorized",
         slug: blog.data?.slug || `${blog.id}`,
       },

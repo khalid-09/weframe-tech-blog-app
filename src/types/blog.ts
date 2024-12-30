@@ -14,6 +14,22 @@ export interface BlogData {
   };
 }
 
+export interface BlogDataNew {
+  id: string;
+  name: string;
+  data: {
+    displayImage: string;
+    title: string;
+    description: string;
+    avatar: string;
+    authorName: string;
+    tag: string;
+    timeToRead: string;
+    category: string;
+    slug: string;
+  };
+}
+
 export interface FaqData {
   id: string;
   name: string;

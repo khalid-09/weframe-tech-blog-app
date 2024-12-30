@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScrolling from "@/components/smooth-scrolling";
-import NewsLetter from "@/components/newsletter";
+import NewsLetter from "@/components/header/newsletter";
 import Navbar from "@/components/header/navbar";
 import { Inter } from "next/font/google";
 import CTA from "@/components/cta/cta";

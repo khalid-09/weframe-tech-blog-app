@@ -81,3 +81,39 @@ const TopBlog = ({ searchQuery, category }: TopBlogProps) => {
 };
 
 export default TopBlog;
+
+// import { builder } from "@builder.io/sdk";
+// import { transformToNewBlogData } from "@/lib/utils";
+// import BlogCard from "./blog-card";
+
+// builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+
+// interface TopBlogProps {
+//   category: string;
+// }
+
+// const TopBlog = async ({ category }: TopBlogProps) => {
+//   const query = category === "all" ? {} : { "data.category": category };
+
+//   const allBlogs = await builder.getAll("home-blogs", {
+//     sort: {
+//       createdDate: 1,
+//     },
+//     fields: "id,name,data",
+//     query: { ...query },
+//   });
+
+//   const transformedBlogs = transformToNewBlogData(allBlogs);
+
+//   return (
+//     <div className="space-y-28">
+//       <div>
+//         {transformedBlogs.map((blog) => (
+//           <BlogCard blog={blog} key={blog.id} />
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default TopBlog;

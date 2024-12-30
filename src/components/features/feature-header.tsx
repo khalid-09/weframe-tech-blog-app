@@ -1,32 +1,36 @@
 import { cn } from "@/lib/utils";
 import BlogHeading from "../blog-heading";
+import { HeaderProps } from "./feature";
 
 export interface CategoryProps {
   category?: "insights" | "case-studies";
   faq?: boolean;
 }
 
-const FeatureHeader = ({ category, faq }: CategoryProps) => {
+interface FeatureHeaderProps extends CategoryProps, HeaderProps {}
+
+const FeatureHeader = ({
+  faq,
+  subHeading,
+  title,
+  heading,
+}: FeatureHeaderProps) => {
   const getHeadingText = () => {
     if (faq) return "Frequently asked questions";
-    return category === "insights"
-      ? "Insights and updates"
-      : "Explore our case studies";
+    return heading;
   };
 
   const getParagraphText = () => {
     if (faq) {
       return "Explore to learn more about how Symbiofy can empower your business with AI-driven solutions.";
     }
-    return category === "insights"
-      ? "Stay informed with our latest articles."
-      : "Discover how our AI transforms healthcare practices.";
+    return subHeading;
   };
 
   return (
     <div className="mx-auto max-w-[47.5rem] space-y-5">
       <div className="space-y-4">
-        <BlogHeading type={faq ? "faq" : "blog"} />
+        <BlogHeading content={title} type={faq ? "faq" : undefined} />
         <h2 className="text-5xl font-bold leading-[3.75rem] tracking-[-2px]">
           {getHeadingText()}
         </h2>

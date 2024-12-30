@@ -14,7 +14,6 @@ import Hero from "./components/hero/hero";
 import Insights from "./components/features/insights";
 import RelatedPost from "./components/blog/related-post";
 import RelatedPostNewsletter from "./components/blog/related-post-newsletter";
-import RelatedPosts from "./components/blog/related-posts";
 import RelatedPostTitle from "./components/blog/related-post-title";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
@@ -188,14 +187,104 @@ Builder.registerComponent(Heading, {
 
 Builder.registerComponent(Hero, {
   name: "Hero",
+  inputs: [
+    {
+      name: "title",
+      type: "string",
+      required: true,
+      defaultValue: "BLOG",
+    },
+    {
+      name: "heading",
+      type: "string",
+      required: true,
+      defaultValue: "Explore our Knowledge Base",
+    },
+    {
+      name: "subHeading",
+      type: "string",
+      required: true,
+      defaultValue: "Insights and resources for AI in healthcare.",
+    },
+  ],
 });
 
 Builder.registerComponent(Insights, {
   name: "Insights",
+  inputs: [
+    {
+      name: "title",
+      type: "string",
+      required: true,
+      defaultValue: "BLOG",
+    },
+    {
+      name: "heading",
+      type: "string",
+      required: true,
+      defaultValue: "Insights and updates",
+    },
+    {
+      name: "subHeading",
+      type: "string",
+      required: true,
+      defaultValue: "Stay informed with our latest articles.",
+    },
+    {
+      name: "blogSelections",
+      type: "list",
+      subFields: [
+        {
+          name: "blogRef",
+          type: "reference",
+          model: "blogs",
+          friendlyName: "Select Blog",
+        },
+      ],
+      defaultValue: [],
+      friendlyName: "Blog Selections",
+      helperText: "Add blogs to display in this section",
+    },
+  ],
 });
 
 Builder.registerComponent(CaseStudies, {
   name: "CaseStudies",
+  inputs: [
+    {
+      name: "title",
+      type: "string",
+      required: true,
+      defaultValue: "BLOG",
+    },
+    {
+      name: "heading",
+      type: "string",
+      required: true,
+      defaultValue: "Explore our case studies",
+    },
+    {
+      name: "subHeading",
+      type: "string",
+      required: true,
+      defaultValue: "Discover how our AI transforms healthcare pratices.",
+    },
+    {
+      name: "blogSelections",
+      type: "list",
+      subFields: [
+        {
+          name: "blogRef",
+          type: "reference",
+          model: "blogs",
+          friendlyName: "Select Blog",
+        },
+      ],
+      defaultValue: [],
+      friendlyName: "Blog Selections",
+      helperText: "Add blogs to display in this section",
+    },
+  ],
 });
 
 Builder.registerComponent(RelatedPost, {

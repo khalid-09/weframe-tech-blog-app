@@ -1,15 +1,32 @@
-"use client";
+import FeatureHeader, { CategoryProps } from "./feature-header";
+import FeatureTop from "./feature-top";
 
-import FeatureHeader, {
-  CategoryProps,
-} from "@/components/features/feature-header";
-import FeatureTop from "@/components/features/feature-top";
+export interface HeaderProps {
+  title?: string;
+  heading?: string;
+  subHeading?: string;
+}
 
-const Feature = ({ category }: CategoryProps) => {
+export interface FeatureProps extends CategoryProps, HeaderProps {
+  selectedBlogIds: string[];
+}
+
+const Feature = ({
+  category,
+  selectedBlogIds,
+  heading,
+  subHeading,
+  title,
+}: FeatureProps) => {
   return (
     <>
-      <FeatureHeader category={category} />
-      <FeatureTop category={category} />
+      <FeatureHeader
+        heading={heading}
+        subHeading={subHeading}
+        title={title}
+        category={category}
+      />
+      <FeatureTop category={category} selectedBlogIds={selectedBlogIds} />
     </>
   );
 };

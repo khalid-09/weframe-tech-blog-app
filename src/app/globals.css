@@ -87,6 +87,6 @@ body {
   }
 
   .paragraph {
-    @apply mb-20 text-xl leading-8 tracking-[-0.4px] text-secondary-text;
+    @apply mb-20 text-xl leading-8 tracking-[-0.4px] text-secondary-text smCustom:mb-10 smCustom:text-lg;
   }
 }

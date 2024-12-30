@@ -3,7 +3,7 @@ import FAQSHeader from "@/components/faqs/faqs-header";
 
 const FAQS = () => {
   return (
-    <section className="space-y-12 px-10 py-20">
+    <section className="space-y-12 px-10 py-20 smCustom:px-4">
       <FAQSHeader />
       <FAQSCollection />
     </section>

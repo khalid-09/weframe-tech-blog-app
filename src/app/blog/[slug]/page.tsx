@@ -21,7 +21,7 @@ const BlogPage = async ({ params }: BlogPageProps) => {
     .promise();
 
   return (
-    <section className="px-10 py-16">
+    <section className="px-10 py-16 smCustom:px-4 smCustom:py-8">
       <RenderBuilderContent content={content} model={builderModelName} />
     </section>
   );

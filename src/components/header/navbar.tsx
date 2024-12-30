@@ -49,7 +49,7 @@ const Navbar = async () => {
           </li>
         ))}
       </ul>
-      <div className="gap hidden items-center gap-6 md:flex">
+      <div className="gap mdCustom:hidden hidden items-center gap-6 md:flex">
         <div className="space-x-3">
           <Button className="h-[3.25rem] w-[6.063rem] border-2 border-mint bg-white px-5 py-4 font-bold text-mint shadow-none transition duration-300 hover:bg-mint hover:text-white">
             Login

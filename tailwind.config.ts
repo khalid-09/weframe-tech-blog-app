@@ -9,6 +9,11 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        mdCustom: [{ max: "1080px" }],
+        smCustom: [{ max: "722px" }],
+        xsCustom: [{ max: "656px" }],
+      },
       colors: {
         newsletter: "hsl(var(--newsletter))",
         mint: "hsl(var(--mint))",

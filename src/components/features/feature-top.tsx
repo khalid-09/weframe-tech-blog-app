@@ -35,7 +35,7 @@ const FeatureTop = ({ category, selectedBlogIds }: FeatureTopProps) => {
 
   return (
     <>
-      <div className="mx-auto grid max-w-[82.75rem] grid-cols-1 gap-2 md:grid-cols-3 md:gap-8">
+      <div className="mx-auto flex max-w-[82.75rem] flex-wrap items-center justify-center gap-4 md:gap-8">
         {features.map((feature) => (
           <FeatureCard key={feature.id} blog={feature} />
         ))}

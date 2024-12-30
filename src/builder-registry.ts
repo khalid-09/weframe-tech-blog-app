@@ -12,7 +12,6 @@ import CaseStudies from "./components/features/case-studies";
 import Heading from "./components/blog/heading";
 import Hero from "./components/hero/hero";
 import Insights from "./components/features/insights";
-import RelatedPost from "./components/blog/related-post";
 import RelatedPostNewsletter from "./components/blog/related-post-newsletter";
 import RelatedPostTitle from "./components/blog/related-post-title";
 import RelatedPosts from "./components/blog/related-posts";

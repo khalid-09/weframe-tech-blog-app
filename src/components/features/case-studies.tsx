@@ -12,7 +12,7 @@ const CaseStudies = ({
     .filter(Boolean);
 
   return (
-    <section className="space-y-[3.75rem] px-10 pb-28 pt-32">
+    <section className="space-y-[3.75rem] px-10 pb-28 pt-32 smCustom:px-4">
       <Feature
         title={title}
         subHeading={subHeading}

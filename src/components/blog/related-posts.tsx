@@ -37,7 +37,7 @@ const RelatedPosts = ({ blogSelections = [] }: RelatedPostsProps) => {
   }, [relatedBlogs, blogIds]);
 
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col gap-4 smCustom:items-center">
       {relatedBlogs.map((blog) => (
         <RelatedPost
           key={blog.id}

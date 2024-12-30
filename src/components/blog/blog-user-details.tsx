@@ -14,7 +14,7 @@ const BlogUserDetails = ({
   readingTime,
 }: BlogUserDetailsProps) => {
   return (
-    <div className="flex items-center justify-center gap-5">
+    <div className="flex flex-wrap items-center justify-center gap-5">
       <div className="flex items-center gap-2.5">
         <AvatarImage avatar={avatarUrl} className="size-[3.15rem]" />
         <span>{author}</span>

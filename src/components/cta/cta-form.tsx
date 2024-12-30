@@ -36,7 +36,7 @@ const CTAInput = () => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <div className="flex items-center gap-4">
+                <div className="xsCustom:flex-col flex items-center gap-4">
                   <div className="relative w-full text-shadeGrey">
                     <Input
                       {...field}

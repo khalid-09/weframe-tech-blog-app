@@ -8,8 +8,8 @@ const BlogList = ({
   const textArr = text.split(",");
 
   return (
-    <div className="mb-20 w-full max-w-[75rem] rounded-3xl bg-surfaceNeutral p-6">
-      <ul className="list-disc space-y-3 px-6 text-2xl leading-8">
+    <div className="mb-20 w-full max-w-[75rem] rounded-3xl bg-surfaceNeutral p-6 smCustom:mb-10">
+      <ul className="list-disc space-y-3 px-6 text-2xl leading-8 smCustom:text-lg">
         {textArr.map((item, index) => (
           <li key={index} className="tracking-[-0.46px]">
             {item}

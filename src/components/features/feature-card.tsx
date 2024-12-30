@@ -13,7 +13,7 @@ const FeatureCard = ({
   },
 }: FeatureCardProps) => {
   return (
-    <div className="max-w-[24.625rem] space-y-2.5 rounded-xl bg-white md:max-w-full">
+    <div className="max-w-[24.625rem] space-y-2.5 rounded-xl bg-white">
       <div className="relative min-h-[17.563rem] max-w-[26.625rem] overflow-hidden rounded-xl">
         <Image
           src={displayImage}
@@ -34,7 +34,7 @@ const FeatureCard = ({
         <p className="text-xl font-semibold leading-7 tracking-[-0.6px]">
           {title}
         </p>
-        <p className="leading-6 tracking-[-0.5px] text-secondary-text opacity-80">
+        <p className="max-w-[26.625rem] leading-6 tracking-[-0.5px] text-secondary-text opacity-80">
           {description}
         </p>
         <Link

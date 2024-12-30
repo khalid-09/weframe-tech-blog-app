@@ -12,7 +12,7 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
   };
 
   return (
-    <div className="relative">
+    <div className="smCustom:mt-10 relative">
       <Input
         className="peer h-[2.625rem] min-w-[20.335rem] rounded-[8px] border border-mint pe-9 ps-10 shadow-[0_6px_30px_0_rgba(0,0,0,0.04)] placeholder:text-base"
         placeholder="Search..."

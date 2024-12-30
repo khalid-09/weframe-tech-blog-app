@@ -20,7 +20,7 @@ const BlogGrid = ({ blogs, blogsPerPage, totalPages }: BlogGridProps) => {
 
   return (
     <>
-      <div className="mx-auto grid max-w-[83.25rem] grid-cols-1 gap-2 md:grid-cols-3 md:gap-5">
+      <div className="mx-auto flex max-w-[83.25rem] flex-wrap items-center justify-center gap-4 md:gap-0">
         {currentBlogs.map((blog) => (
           <BlogCard key={blog.id} blog={blog} />
         ))}

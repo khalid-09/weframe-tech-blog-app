@@ -26,7 +26,7 @@ const AccordionTrigger = React.forwardRef<
       <AccordionPrimitive.Trigger
         ref={ref}
         className={cn(
-          "flex flex-1 items-center justify-between transition-all",
+          "flex flex-1 items-center justify-between gap-3 transition-all",
           className,
         )}
         onClick={() => setIsOpen(!isOpen)}
@@ -35,7 +35,7 @@ const AccordionTrigger = React.forwardRef<
         {children}
         <div
           className={cn(
-            "flex h-11 w-11 items-center justify-center rounded-[8px] bg-[#007AFF26]",
+            "flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] bg-[#007AFF26]",
             isOpen && "bg-mint",
           )}
         >

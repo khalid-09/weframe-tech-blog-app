@@ -14,7 +14,7 @@ const RelatedPostNewsletter = ({
   buttonText = "Join now",
 }: RelatedPostNewsletterProps) => {
   return (
-    <div className="mt-16 w-full max-w-[26.625rem] space-y-6 px-4 py-5">
+    <div className="mt-16 w-full max-w-[26.625rem] space-y-6 py-5">
       <div className="space-y-4">
         <h5 className="text-3xl font-bold leading-10 tracking-[0.5px]">
           {text}

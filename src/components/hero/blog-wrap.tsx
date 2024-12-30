@@ -39,7 +39,7 @@ const BlogWrap = () => {
     <div className="space-y-10">
       <div className="mx-auto flex max-w-[80.25rem] items-center justify-between">
         <Tabs defaultValue="all" className="w-full">
-          <div className="flex items-center justify-between">
+          <div className="smCustom:flex-col mb-10 flex items-center justify-between">
             <TabsList className="flex-wrap gap-4 bg-white p-0">
               {links.map(({ value, text }) => (
                 <TabsTrigger

@@ -27,15 +27,15 @@ const Heading = ({
   };
 
   return (
-    <div className="mx-auto mb-3 w-full max-w-[75rem] space-y-6 py-4">
-      <div>
+    <div className="mx-auto mb-3 w-full max-w-[75rem] py-4">
+      <div className="space-y-6">
         <p
           onClick={handleClick}
           className="cursor-pointer text-lg font-bold tracking-[-0.6px] text-mint"
         >
           {backText}
         </p>
-        <h1 className="text-[5rem] font-medium leading-[5.313rem] tracking-[-0.325rem]">
+        <h1 className="text-[5rem] font-medium leading-[5.313rem] tracking-[-0.325rem] smCustom:text-6xl smCustom:leading-none smCustom:tracking-tight">
           {title}
         </h1>
         <BlogUserDetails

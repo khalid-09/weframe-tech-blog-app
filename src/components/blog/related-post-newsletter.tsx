@@ -1,4 +1,4 @@
-import { Input } from "../ui/input";
+import RelatedPostForm from "./related-post-form";
 
 interface RelatedPostNewsletterProps {
   text: string;
@@ -23,15 +23,7 @@ const RelatedPostNewsletter = ({
           {description}
         </p>
       </div>
-      <div className="flex rounded-lg shadow-sm shadow-black/5">
-        <Input
-          className="-me-px h-[2.813rem] flex-1 rounded-e-none bg-[#E4E4E7] p-4 shadow-none placeholder:text-base placeholder:font-medium placeholder:tracking-[-0.48px] placeholder:text-secondary-text focus-visible:z-10"
-          placeholder={placeholder}
-        />
-        <button className="inline-flex h-[2.813rem] items-center rounded-e-lg border border-input bg-mint px-8 text-base font-bold text-white outline-offset-2 transition-colors hover:bg-accent hover:text-foreground focus:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:cursor-not-allowed disabled:opacity-50">
-          {buttonText}
-        </button>
-      </div>
+      <RelatedPostForm placeholder={placeholder} buttonText={buttonText} />
     </div>
   );
 };

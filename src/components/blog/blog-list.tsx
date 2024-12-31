@@ -1,21 +1,14 @@
 interface BlogListProps {
-  text: string;
+  content: string;
 }
 
-const BlogList = ({
-  text = "Sed iaculis aenean sit sed risus arcu vitae integer elit.,Sed iaculis aenean sit sed risus arcu vitae integer elit.,Sed iaculis aenean sit sed risus arcu vitae integer elit.",
-}: BlogListProps) => {
-  const textArr = text.split(",");
-
+const BlogList = ({ content }: BlogListProps) => {
   return (
-    <div className="mb-20 w-full max-w-[75rem] rounded-3xl bg-surfaceNeutral p-6 smCustom:mb-10">
-      <ul className="list-disc space-y-3 px-6 text-2xl leading-8 smCustom:text-lg">
-        {textArr.map((item, index) => (
-          <li key={index} className="tracking-[-0.46px]">
-            {item}
-          </li>
-        ))}
-      </ul>
+    <div className="mb-20 w-full max-w-[75rem] overflow-hidden rounded-3xl bg-surfaceNeutral p-6 smCustom:mb-10">
+      <div
+        className="prose prose-lg list-disc break-words text-2xl leading-8 tracking-[-0.46px] smCustom:prose-sm marker:text-black smCustom:text-lg"
+        dangerouslySetInnerHTML={{ __html: content }}
+      ></div>
     </div>
   );
 };

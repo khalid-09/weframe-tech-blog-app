@@ -1,11 +1,11 @@
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
 import { ThemeToggle } from "../theme-toggle";
+import { transformToNavLinksData } from "@/lib/utils";
 import { builder } from "@builder.io/sdk";
-import { cn, transformToNavLinksData } from "@/lib/utils";
+import { NavItem } from "./nav-item";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -31,25 +31,10 @@ const Navbar = async () => {
       </Link>
       <ul className="hidden items-center gap-10 font-medium text-secondary-text md:flex">
         {navLinks.map((navLink) => (
-          <li
-            key={navLink.id}
-            className="leading-5 tracking-[-0.48px] transition duration-300 hover:scale-105"
-          >
-            <Link
-              href={navLink.data.link}
-              className={cn(
-                "",
-                navLink.data.name === "Resources" &&
-                  "inline-flex items-center gap-2",
-              )}
-            >
-              <span>{navLink.data.name}</span>
-              {navLink.data.name === "Resources" && <ChevronDown size={18} />}
-            </Link>
-          </li>
+          <NavItem key={navLink.id} navLink={navLink} />
         ))}
       </ul>
-      <div className="gap mdCustom:hidden hidden items-center gap-6 md:flex">
+      <div className="gap hidden items-center gap-6 md:flex mdCustom:hidden">
         <div className="space-x-3">
           <Button className="h-[3.25rem] w-[6.063rem] border-2 border-mint bg-white px-5 py-4 font-bold text-mint shadow-none transition duration-300 hover:bg-mint hover:text-white">
             Login

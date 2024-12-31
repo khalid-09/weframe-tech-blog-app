@@ -1,14 +1,13 @@
 interface BlogSubHeadingProps {
-  text: string;
+  content: string;
 }
 
-const BlogSubHeading = ({
-  text = "Artificial Intelligence x Healthcare",
-}: BlogSubHeadingProps) => {
+const BlogSubHeading = ({ content }: BlogSubHeadingProps) => {
   return (
-    <h4 className="mb-6 w-full max-w-[75rem] text-3xl font-bold leading-10 tracking-[-0.5px]">
-      {text}
-    </h4>
+    <div
+      className="mb-6 w-full max-w-[75rem] text-3xl font-bold leading-10 tracking-[-0.5px]"
+      dangerouslySetInnerHTML={{ __html: content }}
+    ></div>
   );
 };
 

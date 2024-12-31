@@ -1,5 +1,8 @@
 import { RenderBuilderContent } from "@/components/builder";
+import { transformToNewBlogData } from "@/lib/utils";
+import { BlogDataNew } from "@/types/blog";
 import { builder } from "@builder.io/sdk";
+import { Metadata } from "next";
 
 interface BlogPageProps {
   params: Promise<{
@@ -8,6 +11,76 @@ interface BlogPageProps {
 }
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+
+export const generateMetadata = async ({
+  params,
+}: BlogPageProps): Promise<Metadata> => {
+  const slug = (await params).slug;
+
+  const builderBlog = (await builder.get("home-blogs", {
+    fields: "id,name,data",
+    query: {
+      "data.slug": slug,
+    },
+  })) as BlogDataNew;
+
+  if (!builderBlog) {
+    return {
+      title: "Blog Not Found",
+      description: "The requested blog post could not be found",
+    };
+  }
+
+  return {
+    title: builderBlog.data.title,
+    description: builderBlog.data.description,
+    authors: [{ name: builderBlog.data.authorName }],
+    category: builderBlog.data.category,
+    keywords: [builderBlog.data.tag, builderBlog.data.category],
+    openGraph: {
+      title: builderBlog.data.title,
+      description: builderBlog.data.description,
+      images: [
+        {
+          url: builderBlog.data.displayImage,
+          width: 1200,
+          height: 630,
+          alt: builderBlog.data.title,
+        },
+      ],
+      authors: builderBlog.data.authorName,
+      tags: [builderBlog.data.tag],
+      type: "article",
+      publishedTime: new Date().toISOString(),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: builderBlog.data.title,
+      description: builderBlog.data.description,
+      images: [builderBlog.data.displayImage],
+      creator: builderBlog.data.authorName,
+    },
+    other: {
+      "reading-time": builderBlog.data.timeToRead,
+      "author-avatar": builderBlog.data.avatar,
+    },
+  };
+};
+
+export const generateStaticParams = async () => {
+  const allBlogs = await builder.getAll("home-blogs", {
+    sort: {
+      createdDate: 1,
+    },
+    fields: "id,name,data",
+  });
+
+  const blogs = transformToNewBlogData(allBlogs);
+
+  return blogs.map((blog) => ({
+    slug: blog.data.slug,
+  }));
+};
 
 const BlogPage = async ({ params }: BlogPageProps) => {
   const builderModelName = "all-blogs";
@@ -21,44 +94,10 @@ const BlogPage = async ({ params }: BlogPageProps) => {
     .promise();
 
   return (
-    <section className="px-10 py-16 smCustom:px-4 smCustom:py-8">
+    <article className="overflow-hidden px-10 py-16 smCustom:px-4 smCustom:py-8">
       <RenderBuilderContent content={content} model={builderModelName} />
-    </section>
+    </article>
   );
 };
 
 export default BlogPage;
-
-{
-  /* <div className="mx-auto flex max-w-[1666px] gap-10">
-        <div>
-          <BlogTitle />
-          <BlogParagraph />
-          <BlogParagraph text="Ornare ac sem tortor elementum morbi. Dictum imperdiet pharetra id nulla id cursus. Orci arcu egestas sed tempor. Aliquam at vitae orci velit nullam integer magnis. Vitae in gravida felis tristique. Gravida egestas hendrerit pretium tristique nunc consequat. Enim mi nascetur viverra ornare porta varius mauris justo in. In adipiscing venenatis feugiat sem neque. Sapien enim donec feugiat amet. Malesuada tortor maecenas pellentesque nulla." />
-          <BlogSubHeading />
-          <BlogParagraph text="Lorem ipsum dolor sit amet consectetur. Enim quis et sapien id integer. Id pulvinar eleifend egestas risus dolor. Nec convallis nunc odio laoreet. Rhoncus eu nunc arcu nullam porttitor tortor placerat. Quisque amet eget nec amet sit sed. Sed morbi nibh venenatis quis at venenatis in. Enim urna adipiscing velit morbi ornare neque et dolor. Ultrices posuere turpis malesuada ut scelerisque nunc morbi nunc turpis. Est massa nulla bibendum cras nisl id augue. Ornare ut turpis vehicula ornare justo auctor laoreet diam id. Pellentesque elit cum nunc egestas imperdiet. Volutpat suspendisse neque ullamcorper eget massa posuere orci et imperdiet. " />
-          <BlogParagraph text="Vitae enim nec adipiscing eu id nisl. Quam eleifend quis molestie tristique eget dui vestibulum. Consectetur neque elementum velit fringilla aliquam ut. Ipsum gravida tincidunt enim placerat odio. Elementum velit sed eget integer enim massa fermentum ultricies. Duis purus dignissim vulputate a lectus odio et vel sit. Posuere in amet elementum cursus tortor sit lacus in ac." />
-          <BlogList
-            text={[
-              "Sed iaculis aenean sit sed risus arcu vitae integer elit.",
-              "Sed iaculis aenean sit sed risus arcu vitae integer elit.",
-              "Sed iaculis aenean sit sed risus arcu vitae integer elit.",
-            ]}
-          />
-          <BlogBoldParagraph />
-          <BlogSubHeading />
-          <BlogParagraph text="Lorem ipsum dolor sit amet consectetur. Enim quis et sapien id integer. Id pulvinar eleifend egestas risus dolor. Nec convallis nunc odio laoreet. Rhoncus eu nunc arcu nullam porttitor tortor placerat. Quisque amet eget nec amet sit sed. Sed morbi nibh venenatis quis at venenatis in. Enim urna adipiscing velit morbi ornare neque et dolor. Ultrices posuere turpis malesuada ut scelerisque nunc morbi nunc turpis. Est massa nulla bibendum cras nisl id augue. Ornare ut turpis vehicula ornare justo auctor laoreet diam id. Pellentesque elit cum nunc egestas imperdiet. Volutpat suspendisse neque ullamcorper eget massa posuere orci et imperdiet. " />
-          <BlogSubImage />
-          <BlogBoldParagraph text="Ornare ac sem tortor elementum morbi. Dictum imperdiet pharetra id nulla id cursus. Orci arcu egestas sed tempor. Aliquam at vitae orci velit nullam integer magnis. Vitae in gravida felis tristique. Gravida egestas hendrerit pretium tristique nunc consequat. Enim mi nascetur viverra ornare porta varius mauris justo in. In adipiscing venenatis feugiat sem neque. Sapien enim donec feugiat amet. Malesuada tortor maecenas pellentesque nulla." />
-          <BlogList
-            text={[
-              "Sed iaculis aenean sit sed risus arcu vitae integer elit.",
-              "Sed iaculis aenean sit sed risus arcu vitae integer elit.",
-              "Sed iaculis aenean sit sed risus arcu vitae integer elit.",
-            ]}
-          />
-          <BlogBoldParagraph text="Ornare ac sem tortor elementum morbi. Dictum imperdiet pharetra id nulla id cursus. Orci arcu egestas sed tempor. Aliquam at vitae orci velit nullam integer magnis. Vitae in gravida felis tristique. Gravida egestas hendrerit pretium tristique nunc consequat. Enim mi nascetur viverra ornare porta varius mauris justo in. In adipiscing venenatis feugiat sem neque. Sapien enim donec feugiat amet. Malesuada tortor maecenas pellentesque nulla. Vitae enim nec adipiscing eu id nisl. Quam eleifend quis molestie tristique eget dui vestibulum. Consectetur neque elementum velit fringilla aliquam ut. Ipsum gravida tincidunt enim placerat odio. Elementum velit sed eget integer enim massa fermentum ultricies. Duis purus dignissim vulputate a lectus odio et vel sit. Posuere in amet elementum cursus tortor sit lacus in ac." />
-        </div>
-        <div className="w-full max-w-[26.625rem] bg-black">Related Posts</div>
-      </div> */
-}

@@ -1,12 +1,12 @@
 "use client";
 
-import { BlogData } from "@/types/blog";
+import { BlogDataNew } from "@/types/blog";
 import Image from "next/image";
 import Link from "next/link";
 import AvatarImage from "../avatar-image";
 
 interface BlogCardProps {
-  blog: BlogData;
+  blog: BlogDataNew;
 }
 
 const BlogCard = ({
@@ -24,7 +24,10 @@ const BlogCard = ({
   },
 }: BlogCardProps) => {
   return (
-    <Link href={`blog/${slug}`} className="px-2 py-1.5 md:px-4 md:py-3">
+    <Link
+      href={`blog/${slug}`}
+      className="px-2 py-1.5 transition duration-300 hover:scale-105 md:px-4 md:py-3"
+    >
       <div className="space-y-4">
         <div className="relative min-h-[17.563rem] max-w-[24.625rem] overflow-hidden rounded-xl">
           <Image
@@ -47,10 +50,10 @@ const BlogCard = ({
             {authorName}
           </span>
           <span className="shrink-0 rounded-full bg-mint px-3 py-1.5 text-white">
-            {tag[0]}
+            {tag}
           </span>
           <span className="font-medium leading-5 tracking-[-0.03rem] text-secondary-text">
-            {timeToRead} mins
+            {timeToRead}
           </span>
         </div>
       </div>

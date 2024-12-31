@@ -1,3 +1,5 @@
+"use client";
+
 import AvatarImage from "../avatar-image";
 
 export interface RelatedPostProps {
@@ -6,7 +8,7 @@ export interface RelatedPostProps {
   description: string;
   author: string;
   tag: string;
-  timeToRead: number;
+  timeToRead: string;
 }
 
 const RelatedPost = ({
@@ -15,7 +17,7 @@ const RelatedPost = ({
   description = "Our Ai Hackathons are intensive, collaborative sessions that spark Innovation",
   author = "Bernd Holbein",
   tag = "Insights",
-  timeToRead = 12,
+  timeToRead = "5 mins",
 }: RelatedPostProps) => {
   return (
     <div className="mb-4 w-full max-w-[26.625rem] space-y-4 rounded-xl bg-surfaceNeutral px-6 py-5">
@@ -32,7 +34,7 @@ const RelatedPost = ({
           {tag}
         </span>
         <span className="font-medium tracking-[-0.48px] text-secondary-text">
-          {timeToRead} mins
+          {timeToRead}
         </span>
       </div>
     </div>

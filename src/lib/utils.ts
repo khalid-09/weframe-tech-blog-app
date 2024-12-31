@@ -14,6 +14,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+//**Functions to add a type guard for fetched data **/
+
 export const transformToBlogData = (blogs: BuilderContent[]): BlogData[] => {
   return blogs
     .filter(
@@ -92,6 +94,7 @@ export const transformToNavLinksData = (
       data: {
         name: navLink.data?.name || "No name",
         link: navLink.data?.link || "#",
+        subLinks: navLink.data.subLinks || [],
       },
     }));
 };

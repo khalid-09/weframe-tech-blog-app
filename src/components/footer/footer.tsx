@@ -33,8 +33,8 @@ const Footer = async () => {
           </div>
         ))}
       </div>
-      <Separator className="border-1 mb-4 text-[#666]" />
-      <div className="mb-10 flex items-center justify-center gap-8 font-medium tracking-[-0.48px] text-[#666] xsCustom:flex-col-reverse">
+      <Separator className="border-1 mb-4 mt-20 text-[#666]" />
+      <div className="flex items-center justify-center gap-8 font-medium tracking-[-0.48px] text-[#666] smCustom:mb-10 xsCustom:flex-col-reverse">
         <p>©2024 @weframetech · All rights reserved.</p>
         <p className="flex items-center gap-6">
           <span>Terms of use</span>

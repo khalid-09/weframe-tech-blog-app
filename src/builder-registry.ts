@@ -1,4 +1,5 @@
 "use client";
+
 import { builder, Builder } from "@builder.io/react";
 import BannerImage from "./components/blog/banner-image";
 import BlogBoldParagraph from "./components/blog/blog-bold-paragraph";
@@ -33,9 +34,10 @@ Builder.registerComponent(BlogBoldParagraph, {
   name: "BlogBoldParagraph",
   inputs: [
     {
-      name: "text",
-      type: "string",
-      required: true,
+      name: "content",
+      type: "richText",
+      defaultValue:
+        "<p>Vitae enim nec adipiscing eu id nisl. Quam eleifend quis molestie tristique eget dui vestibulum. Consectetur neque elementum velit fringilla aliquam ut. Ipsum gravida tincidunt enim placerat odio. Elementum velit sed eget integer enim massa fermentum ultricies. Duis purus dignissim vulputate a lectus odio et vel sit. Posuere in amet elementum cursus tortor sit lacus in ac.</p>",
     },
   ],
 });
@@ -44,9 +46,10 @@ Builder.registerComponent(BlogParagraph, {
   name: "BlogParagraph",
   inputs: [
     {
-      name: "text",
-      type: "string",
-      required: true,
+      name: "content",
+      type: "richText",
+      defaultValue:
+        "<p>Lorem ipsum dolor sit amet consectetur. Enim quis et sapien id integer. Id pulvinar eleifend egestas risus dolor. Nec convallis nunc odio laoreet. Rhoncus eu nunc arcu nullam porttitor tortor placerat. Quisque amet eget nec amet sit sed. Sed morbi nibh venenatis quis at venenatis in. Enim urna adipiscing velit morbi ornare neque et dolor. Ultrices posuere turpis malesuada ut scelerisque nunc morbi nunc turpis. Est massa nulla bibendum cras nisl id augue. Ornare ut turpis vehicula ornare justo auctor laoreet diam id. Pellentesque elit cum nunc egestas imperdiet. Volutpat suspendisse neque ullamcorper eget massa posuere orci et imperdiet.</p>",
     },
   ],
 });
@@ -55,9 +58,9 @@ Builder.registerComponent(BlogSubHeading, {
   name: "BlogSubHeading",
   inputs: [
     {
-      name: "text",
-      type: "string",
-      required: true,
+      name: "content",
+      type: "richText",
+      defaultValue: "<h4>Artificial Intelligence x Healthcare</h4>",
     },
   ],
 });
@@ -66,9 +69,20 @@ Builder.registerComponent(BlogTitle, {
   name: "BlogTitle",
   inputs: [
     {
-      name: "text",
-      type: "string",
-      required: true,
+      name: "content",
+      type: "richText",
+      defaultValue: "<h2>Introduction</h2>",
+    },
+  ],
+});
+
+Builder.registerComponent(RelatedPostTitle, {
+  name: "RelatedPostTitle",
+  inputs: [
+    {
+      name: "content",
+      type: "richText",
+      defaultValue: "<h2>Related Posts</h2>",
     },
   ],
 });
@@ -77,9 +91,10 @@ Builder.registerComponent(BlogList, {
   name: "BlogList",
   inputs: [
     {
-      name: "text",
-      type: "string",
-      required: true,
+      name: "content",
+      type: "richText",
+      defaultValue:
+        "<ul><li>Sample Item 1</li><li>Sample Item 2</li><li>Sample Item 3</li></ul>",
     },
   ],
 });
@@ -237,7 +252,7 @@ Builder.registerComponent(Insights, {
         {
           name: "blogRef",
           type: "reference",
-          model: "blogs",
+          model: "home-blogs",
           friendlyName: "Select Blog",
         },
       ],
@@ -276,7 +291,7 @@ Builder.registerComponent(CaseStudies, {
         {
           name: "blogRef",
           type: "reference",
-          model: "blogs",
+          model: "home-blogs",
           friendlyName: "Select Blog",
         },
       ],
@@ -313,17 +328,6 @@ Builder.registerComponent(RelatedPostNewsletter, {
   ],
 });
 
-Builder.registerComponent(RelatedPostTitle, {
-  name: "RelatedPostTitle",
-  inputs: [
-    {
-      name: "text",
-      type: "string",
-      required: true,
-    },
-  ],
-});
-
 Builder.registerComponent(RelatedPosts, {
   name: "RelatedPosts",
   inputs: [
@@ -334,7 +338,7 @@ Builder.registerComponent(RelatedPosts, {
         {
           name: "blogRef",
           type: "reference",
-          model: "blogs",
+          model: "home-blogs",
           friendlyName: "Select Blog",
         },
       ],

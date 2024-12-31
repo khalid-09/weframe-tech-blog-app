@@ -23,7 +23,7 @@ const Heading = ({
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/blog");
+    router.push("/");
   };
 
   return (

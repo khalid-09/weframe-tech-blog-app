@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { BlogSelection } from "../features/insights";
-import { BlogData } from "@/types/blog";
+import { BlogDataNew } from "@/types/blog";
 import { builder } from "@builder.io/sdk";
-import { transformToBlogData } from "@/lib/utils";
+import { transformToNewBlogData } from "@/lib/utils";
 import RelatedPost from "./related-post";
 
 interface RelatedPostsProps {
@@ -16,20 +16,20 @@ const RelatedPosts = ({ blogSelections = [] }: RelatedPostsProps) => {
     .map((selection) => selection.blogRef?.id)
     .filter(Boolean);
 
-  const [relatedBlogs, setRelatedBlogs] = useState<BlogData[]>([]);
+  const [relatedBlogs, setRelatedBlogs] = useState<BlogDataNew[]>([]);
 
   useEffect(() => {
     const fetchFeatures = async () => {
       if (!blogIds.length) return;
 
-      const selectedBlogs = await builder.getAll("blogs", {
+      const selectedBlogs = await builder.getAll("home-blogs", {
         fields: "id,name,data",
         query: {
           id: { $in: blogIds },
         },
       });
 
-      const transformedFeatures = transformToBlogData(selectedBlogs);
+      const transformedFeatures = transformToNewBlogData(selectedBlogs);
       setRelatedBlogs(transformedFeatures);
     };
 
@@ -45,7 +45,7 @@ const RelatedPosts = ({ blogSelections = [] }: RelatedPostsProps) => {
           title={blog.data.title}
           description={blog.data.description}
           author={blog.data.authorName}
-          tag={blog.data.tag[0]}
+          tag={blog.data.tag}
           timeToRead={blog.data.timeToRead}
         />
       ))}

@@ -1,14 +1,13 @@
 interface RelatedPostTitleProps {
-  text: string;
+  content: string;
 }
 
-const RelatedPostTitle = ({
-  text = "Related Posts",
-}: RelatedPostTitleProps) => {
+const RelatedPostTitle = ({ content }: RelatedPostTitleProps) => {
   return (
-    <h4 className="mb-6 w-full max-w-[26.625rem] text-3xl font-bold tracking-[-0.5px] smCustom:text-center">
-      {text}
-    </h4>
+    <div
+      className="mb-6 w-full max-w-[26.625rem] text-3xl font-bold tracking-[-0.5px] smCustom:text-center"
+      dangerouslySetInnerHTML={{ __html: content }}
+    ></div>
   );
 };
 

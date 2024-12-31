@@ -45,6 +45,10 @@ export interface NavLinks {
   data: {
     name: string;
     link: string;
+    subLinks?: {
+      name: string;
+      link: string;
+    }[];
   };
 }
 

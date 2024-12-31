@@ -1,12 +1,15 @@
 interface BlogTitleProps {
-  text: string;
+  content: string;
 }
 
-const BlogTitle = ({ text = "Introduction" }: BlogTitleProps) => {
+const BlogTitle = ({ content }: BlogTitleProps) => {
   return (
-    <h3 className="mb-6 w-full max-w-[75rem] text-5xl font-bold leading-[3.75rem] tracking-[-2px]">
-      {text}
-    </h3>
+    <div className="mb-6 w-full max-w-[75rem]">
+      <div
+        className="prose prose-lg break-words text-5xl font-bold leading-[3.75rem] tracking-[-2px] smCustom:prose-sm smCustom:text-3xl smCustom:leading-[2.5rem]"
+        dangerouslySetInnerHTML={{ __html: content }}
+      ></div>
+    </div>
   );
 };
 

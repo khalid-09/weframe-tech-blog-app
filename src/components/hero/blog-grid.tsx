@@ -3,10 +3,10 @@
 import { useState } from "react";
 import BlogCard from "./blog-card";
 import BlogPagination from "./blog-pagination";
-import { BlogData } from "@/types/blog";
+import { BlogDataNew } from "@/types/blog";
 
 interface BlogGridProps {
-  blogs: BlogData[];
+  blogs: BlogDataNew[];
   blogsPerPage: number;
   totalPages: number;
 }
@@ -37,25 +37,3 @@ const BlogGrid = ({ blogs, blogsPerPage, totalPages }: BlogGridProps) => {
 };
 
 export default BlogGrid;
-
-// import BlogCard from "./blog-card";
-// import { BlogData } from "@/types/blog";
-
-// interface BlogGridProps {
-//   blogs: BlogData[];
-// }
-
-// const BlogGrid = ({ blogs }: BlogGridProps) => {
-//   return (
-//     <>
-//       <div className="mx-auto grid max-w-[83.25rem] grid-cols-1 gap-2 md:grid-cols-3 md:gap-5">
-//         {blogs.map((blog) => (
-//           <BlogCard key={blog.id} blog={blog} />
-//         ))}
-//       </div>
-//       <div></div>
-//     </>
-//   );
-// };
-
-// export default BlogGrid;

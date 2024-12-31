@@ -16,14 +16,14 @@ Ensure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/khalid-09/weframe-tables.git
+   git clone https://github.com/khalid-09/weframe-tech-blog-app.git
 
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd weframe-tables
+   cd weframe-tech-blog-app
 
    ```
 

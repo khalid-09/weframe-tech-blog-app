@@ -1,8 +1,8 @@
 import { RenderBuilderContent } from "@/components/builder";
-import { transformToNewBlogData } from "@/lib/utils";
-import { BlogDataNew } from "@/types/blog";
+// import { transformToNewBlogData } from "@/lib/utils";
+// import { BlogDataNew } from "@/types/blog";
 import { builder } from "@builder.io/sdk";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 
 interface BlogPageProps {
   params: Promise<{

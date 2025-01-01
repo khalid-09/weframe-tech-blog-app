@@ -4,7 +4,7 @@ import FAQS from "@/components/faqs/faqs";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 const HomePage = async () => {
   const builderModelName = "page";

@@ -12,6 +12,8 @@ interface FeatureTopProps extends CategoryProps {
   selectedBlogIds: string[];
 }
 
+export const revalidate = 60;
+
 const FeatureTop = ({ category, selectedBlogIds }: FeatureTopProps) => {
   const [features, setFeatures] = useState<BlogDataNew[]>([]);
   const [visibleCount, setVisibleCount] = useState(3);
@@ -25,6 +27,10 @@ const FeatureTop = ({ category, selectedBlogIds }: FeatureTopProps) => {
         fields: "id,name,data",
         query: {
           id: { $in: selectedBlogIds },
+        },
+        cache: false,
+        options: {
+          noTargeting: true,
         },
       });
 

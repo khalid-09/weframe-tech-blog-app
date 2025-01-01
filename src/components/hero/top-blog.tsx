@@ -14,6 +14,8 @@ interface TopBlogProps {
   category: string;
 }
 
+export const revalidate = 60;
+
 const TopBlog = ({ searchQuery, category }: TopBlogProps) => {
   const [allBlogs, setAllBlogs] = useState<BlogDataNew[]>([]);
   const [filteredBlogs, setFilteredBlogs] = useState<BlogDataNew[]>([]);
@@ -31,6 +33,10 @@ const TopBlog = ({ searchQuery, category }: TopBlogProps) => {
           },
           fields: "id,name,data",
           query: { ...query },
+          cache: false,
+          options: {
+            noTargeting: true,
+          },
         });
 
         const transformedBlogs = transformToNewBlogData(blogs);

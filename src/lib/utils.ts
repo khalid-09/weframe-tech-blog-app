@@ -4,7 +4,7 @@ import {
   FaqData,
   FooterData,
   NavLinks,
-  NewsLetter,
+  // NewsLetter,
 } from "@/types/blog";
 import { BuilderContent } from "@builder.io/sdk";
 import { clsx, type ClassValue } from "clsx";
@@ -99,23 +99,23 @@ export const transformToNavLinksData = (
     }));
 };
 
-export const transformToNewsLetterData = (
-  newsLetter: BuilderContent[],
-): NewsLetter => {
-  if (!newsLetter || newsLetter.length === 0) {
-    return {
-      text: "Subscribe to our Newsletter For New & latest Blogs and Resources",
-    };
-  }
+// export const transformToNewsLetterData = (
+//   newsLetter: BuilderContent[],
+// ): NewsLetter => {
+//   if (!newsLetter || newsLetter.length === 0) {
+//     return {
+//       text: "Subscribe to our Newsletter For New & latest Blogs and Resources",
+//     };
+//   }
 
-  const firstNewsletter = newsLetter[0];
+//   const firstNewsletter = newsLetter[0];
 
-  return {
-    text:
-      firstNewsletter.data?.text ||
-      "Subscribe to our Newsletter For New & latest Blogs and Resources",
-  };
-};
+//   return {
+//     text:
+//       firstNewsletter.data?.text ||
+//       "Subscribe to our Newsletter For New & latest Blogs and Resources",
+//   };
+// };
 
 export const transformToFooterData = (
   footerData: BuilderContent[],

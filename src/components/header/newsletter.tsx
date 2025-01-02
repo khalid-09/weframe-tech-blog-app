@@ -1,16 +1,17 @@
-import { transformToNewsLetterData } from "@/lib/utils";
+// import { transformToNewsLetterData } from "@/lib/utils";
+import { NewsLetter as AccouncementType } from "@/types/blog";
 import { builder } from "@builder.io/sdk";
 import { ArrowUpRight } from "lucide-react";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 const NewsLetter = async () => {
-  const newsletterData = await builder.getAll("newsletter", {
+  const {
+    data: { text },
+  } = (await builder.get("newsletter", {
     fields: "data.text",
     cachebust: true,
-  });
-
-  const { text } = transformToNewsLetterData(newsletterData);
+  })) as AccouncementType;
 
   return (
     <header className="flex h-[4.188rem] items-center justify-between bg-newsletter px-4 text-white md:justify-center">

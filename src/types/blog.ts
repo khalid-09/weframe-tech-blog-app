@@ -53,7 +53,9 @@ export interface NavLinks {
 }
 
 export interface NewsLetter {
-  text: string;
+  data: {
+    text: string;
+  };
 }
 
 export interface FooterData {

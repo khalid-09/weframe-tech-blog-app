@@ -10,6 +10,8 @@ interface BlogPageProps {
   }>;
 }
 
+export const dynamic = "force-dynamic";
+
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 export const generateMetadata = async ({
@@ -85,7 +87,7 @@ export const generateStaticParams = async () => {
 };
 
 const BlogPage = async ({ params }: BlogPageProps) => {
-  const builderModelName = "all-blogs";
+  const builderModelName = "home-blogs";
   const slug = (await params).slug;
   const content = await builder
     .get(builderModelName, {
@@ -97,9 +99,11 @@ const BlogPage = async ({ params }: BlogPageProps) => {
     .promise();
 
   return (
-    <article className="overflow-hidden px-10 py-16 smCustom:px-4 smCustom:py-8">
-      <RenderBuilderContent content={content} model={builderModelName} />
-    </article>
+    <>
+      <article className="overflow-hidden px-10 py-16 smCustom:px-4 smCustom:py-8">
+        <RenderBuilderContent content={content} model={builderModelName} />
+      </article>
+    </>
   );
 };
 

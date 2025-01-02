@@ -14,6 +14,7 @@ export default async function Page(props: PageProps) {
 
   const content = await builder
     .get(builderModelName, {
+      cachebust: true,
       userAttributes: {
         urlPath: "/" + ((await props?.params)?.page?.join("/") || ""),
       },

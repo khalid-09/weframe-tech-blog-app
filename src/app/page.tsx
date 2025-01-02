@@ -4,12 +4,11 @@ import FAQS from "@/components/faqs/faqs";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-export const dynamic = "force-dynamic";
-
 const HomePage = async () => {
   const builderModelName = "page";
   const content = await builder
     .get(builderModelName, {
+      cachebust: true,
       userAttributes: {
         urlPath: "/",
       },

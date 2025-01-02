@@ -9,17 +9,12 @@ import { NavItem } from "./nav-item";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-export const revalidate = 60;
-
 const Navbar = async () => {
   const allNavLinks = await builder.getAll("nav-links", {
     sort: {
       createdDate: 1,
     },
-    cache: false,
-    options: {
-      noTargeting: true,
-    },
+    cachebust: true,
     fields: "id,name,data",
   });
 

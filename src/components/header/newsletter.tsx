@@ -4,15 +4,10 @@ import { ArrowUpRight } from "lucide-react";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-export const revalidate = 60;
-
 const NewsLetter = async () => {
   const newsletterData = await builder.getAll("newsletter", {
     fields: "data.text",
-    cache: false,
-    options: {
-      noTargeting: true,
-    },
+    cachebust: true,
   });
 
   const { text } = transformToNewsLetterData(newsletterData);

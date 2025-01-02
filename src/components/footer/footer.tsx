@@ -5,17 +5,12 @@ import { transformToFooterData } from "@/lib/utils";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-export const revalidate = 60;
-
 const Footer = async () => {
   const allFooterData = await builder.getAll("footer", {
     sort: {
       createdDate: 1,
     },
-    cache: false,
-    options: {
-      noTargeting: true,
-    },
+    cachebust: true,
     fields: "id,name,data",
   });
 

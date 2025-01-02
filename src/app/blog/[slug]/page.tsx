@@ -10,8 +10,6 @@ interface BlogPageProps {
   }>;
 }
 
-export const dynamic = "force-dynamic";
-
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 export const generateMetadata = async ({
@@ -21,6 +19,7 @@ export const generateMetadata = async ({
 
   const builderBlog = (await builder.get("home-blogs", {
     fields: "id,name,data",
+    cachebust: true,
     query: {
       "data.slug": slug,
     },
@@ -71,6 +70,7 @@ export const generateMetadata = async ({
 
 export const generateStaticParams = async () => {
   const allBlogs = await builder.getAll("home-blogs", {
+    cachebust: true,
     sort: {
       createdDate: 1,
     },
@@ -84,19 +84,14 @@ export const generateStaticParams = async () => {
   }));
 };
 
-export const revalidate = 60;
-
 const BlogPage = async ({ params }: BlogPageProps) => {
   const builderModelName = "all-blogs";
   const slug = (await params).slug;
   const content = await builder
     .get(builderModelName, {
+      cachebust: true,
       query: {
         "data.slug": slug,
-      },
-      cache: false,
-      options: {
-        noTargeting: true,
       },
     })
     .promise();

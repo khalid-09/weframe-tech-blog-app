@@ -12,7 +12,7 @@ interface PageProps {
 
 const builderModelName = "page";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 const Page = async ({ params }: PageProps) => {
   const isRootPath = (await params).page?.[0] === "__index";
@@ -23,6 +23,7 @@ const Page = async ({ params }: PageProps) => {
       userAttributes: {
         urlPath,
       },
+      enrich: true,
     })
     .toPromise();
 

@@ -29,6 +29,7 @@ const TopBlog = ({ searchQuery, category }: TopBlogProps) => {
           sort: {
             createdDate: 1,
           },
+          enrich: true,
           fields: "id,name,data",
           query: { ...query },
           cachebust: true,

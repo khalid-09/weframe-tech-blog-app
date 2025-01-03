@@ -6,7 +6,7 @@ import { ThemeToggle } from "../theme-toggle";
 import { transformToNavLinksData } from "@/lib/utils";
 import { builder } from "@builder.io/sdk";
 import { NavItem } from "./nav-item";
-import { AlignJustify } from "lucide-react";
+import MobileNav from "./mobile-nav";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -47,11 +47,7 @@ const Navbar = async () => {
         </div>
         <ThemeToggle />
       </div>
-      <div className="block md:hidden">
-        <Button size="icon" variant="outline">
-          <AlignJustify />
-        </Button>
-      </div>
+      <MobileNav navLinks={navLinks} />
     </nav>
   );
 };

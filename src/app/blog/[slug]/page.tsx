@@ -12,7 +12,7 @@ interface BlogPageProps {
   }>;
 }
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -27,6 +27,7 @@ export const generateMetadata = async ({
     query: {
       "data.slug": slug,
     },
+    enrich: true,
   })) as BlogDataNew;
 
   if (!builderBlog) {

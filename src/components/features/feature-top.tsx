@@ -26,6 +26,7 @@ const FeatureTop = ({ category, selectedBlogIds }: FeatureTopProps) => {
         query: {
           id: { $in: selectedBlogIds },
         },
+        enrich: true,
         cachebust: true,
       });
 

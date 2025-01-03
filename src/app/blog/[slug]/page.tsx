@@ -99,6 +99,7 @@ const BlogPage = async ({ params }: BlogPageProps) => {
       query: {
         "data.slug": slug,
       },
+      enrich: true,
     })
     .promise();
 

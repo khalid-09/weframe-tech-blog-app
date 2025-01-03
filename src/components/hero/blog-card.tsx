@@ -41,12 +41,12 @@ const BlogCard = ({
         className="block px-2 py-1.5 transition duration-300 md:px-4 md:py-3"
       >
         <motion.div
-          className="space-y-4"
+          className="space-y-3 md:space-y-4"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
         >
           <motion.div
-            className="relative min-h-[17.563rem] max-w-[24.625rem] overflow-hidden rounded-xl"
+            className="relative h-48 w-full max-w-[24.625rem] overflow-hidden rounded-xl sm:h-56 md:h-64 lg:h-[17.563rem]"
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3 }}
           >
@@ -59,7 +59,7 @@ const BlogCard = ({
             />
           </motion.div>
           <motion.p
-            className="text-xl font-semibold leading-[1.875rem] tracking-[-0.038rem]"
+            className="line-clamp-1 text-lg font-semibold leading-snug tracking-[-0.038rem] sm:text-xl sm:leading-[1.875rem]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -68,7 +68,7 @@ const BlogCard = ({
             {title}
           </motion.p>
           <motion.p
-            className="line-clamp-2 max-w-[24.625rem] leading-[1.625rem] tracking-[-0.031rem] text-secondary-text"
+            className="line-clamp-2 max-w-[24.625rem] text-sm leading-relaxed tracking-[-0.031rem] text-secondary-text sm:text-base sm:leading-[1.625rem]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -77,7 +77,7 @@ const BlogCard = ({
             {description}
           </motion.p>
           <motion.div
-            className="flex items-center gap-4"
+            className="flex items-center gap-2 sm:gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -87,19 +87,19 @@ const BlogCard = ({
               <AvatarImage avatar={avatar} />
             </motion.div>
             <motion.span
-              className="font-medium leading-5 tracking-[-0.03rem] text-secondary-text"
+              className="text-sm font-medium leading-5 tracking-[-0.03rem] text-secondary-text sm:text-base"
               whileHover={{ y: -2 }}
             >
               {authorName}
             </motion.span>
             <motion.span
-              className="shrink-0 rounded-full bg-mint px-3 py-1.5 text-white"
+              className="shrink-0 rounded-full bg-mint px-2 py-1 text-xs text-white sm:px-3 sm:text-sm"
               whileHover={{ y: -2, scale: 1.05 }}
             >
               {tag}
             </motion.span>
             <motion.span
-              className="font-medium leading-5 tracking-[-0.03rem] text-secondary-text"
+              className="text-sm font-medium leading-5 tracking-[-0.03rem] text-secondary-text sm:text-base"
               whileHover={{ y: -2 }}
             >
               {timeToRead}

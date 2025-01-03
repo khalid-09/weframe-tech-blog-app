@@ -3,6 +3,8 @@ import { transformToNewBlogData } from "@/lib/utils";
 import { BlogDataNew } from "@/types/blog";
 import { builder } from "@builder.io/sdk";
 import { Metadata } from "next";
+import { format } from "date-fns";
+import BlogHero from "@/components/blog/blog-hero";
 
 interface BlogPageProps {
   params: Promise<{
@@ -86,8 +88,9 @@ export const generateStaticParams = async () => {
   }));
 };
 
+const builderModelName = "home-blogs";
+
 const BlogPage = async ({ params }: BlogPageProps) => {
-  const builderModelName = "home-blogs";
   const slug = (await params).slug;
   const content = await builder
     .get(builderModelName, {
@@ -98,8 +101,12 @@ const BlogPage = async ({ params }: BlogPageProps) => {
     })
     .promise();
 
+  const blog = content.data as BlogDataNew["data"];
+  const createdDate = format(new Date(content.createdDate), "dd MMM yyyy");
+
   return (
     <>
+      <BlogHero blog={blog} createdDate={createdDate} />
       <article className="overflow-hidden px-10 py-16 smCustom:px-4 smCustom:py-8">
         <RenderBuilderContent content={content} model={builderModelName} />
       </article>

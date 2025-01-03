@@ -32,7 +32,7 @@ const FeatureCard = ({
   return (
     <motion.div
       ref={ref}
-      className="max-w-[24.625rem] space-y-2.5 rounded-xl bg-white"
+      className="max-w-[24.625rem] space-y-2 rounded-xl bg-white sm:space-y-2.5"
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -43,7 +43,7 @@ const FeatureCard = ({
       }}
     >
       <motion.div
-        className="relative min-h-[17.563rem] max-w-[26.625rem] overflow-hidden rounded-xl"
+        className="relative h-48 w-full max-w-[24.625rem] overflow-hidden rounded-xl sm:h-56 md:h-64 lg:h-[17.563rem]"
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.3 }}
       >
@@ -55,7 +55,7 @@ const FeatureCard = ({
         />
       </motion.div>
       <motion.div
-        className="space-y-4 p-4"
+        className="space-y-3 p-3 sm:space-y-4 sm:p-4"
         variants={contentVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}

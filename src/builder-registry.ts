@@ -16,6 +16,7 @@ import Insights from "./components/features/insights";
 import RelatedPostNewsletter from "./components/blog/related-post-newsletter";
 import RelatedPostTitle from "./components/blog/related-post-title";
 import RelatedPosts from "./components/blog/related-posts";
+import Text from "./components/blog/text";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -175,11 +176,6 @@ Builder.registerComponent(Heading, {
       meta: {
         ts: "string",
       },
-      required: true,
-    },
-    {
-      name: "backText",
-      type: "string",
       required: true,
     },
     {
@@ -345,6 +341,17 @@ Builder.registerComponent(RelatedPosts, {
       defaultValue: [],
       friendlyName: "Blog Selections",
       helperText: "Add blogs to display in this section",
+    },
+  ],
+});
+
+Builder.registerComponent(Text, {
+  override: true,
+  name: "Text",
+  inputs: [
+    {
+      name: "content",
+      type: "richText",
     },
   ],
 });

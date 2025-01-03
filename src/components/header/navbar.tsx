@@ -6,6 +6,7 @@ import { ThemeToggle } from "../theme-toggle";
 import { transformToNavLinksData } from "@/lib/utils";
 import { builder } from "@builder.io/sdk";
 import { NavItem } from "./nav-item";
+import { AlignJustify } from "lucide-react";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -21,12 +22,12 @@ const Navbar = async () => {
   const navLinks = transformToNavLinksData(allNavLinks);
 
   return (
-    <nav className="flex max-h-[6.25rem] items-center justify-between border-[0.5px] border-b border-black border-opacity-30 bg-white px-6 py-4 md:px-10 md:py-6">
+    <nav className="flex max-h-[6.25rem] items-center justify-between border-[0.5px] border-b border-black border-opacity-30 bg-white px-4 py-4 md:px-10 md:py-6">
       <Link href="/">
         <Image
           src={logo}
           alt="logo"
-          className="h-[3.875rem] w-[7.929rem]"
+          className="h-10 w-16 md:h-[3.875rem] md:w-[7.929rem]"
           quality={50}
         />
       </Link>
@@ -45,6 +46,11 @@ const Navbar = async () => {
           </Button>
         </div>
         <ThemeToggle />
+      </div>
+      <div className="block md:hidden">
+        <Button size="icon" variant="outline">
+          <AlignJustify />
+        </Button>
       </div>
     </nav>
   );

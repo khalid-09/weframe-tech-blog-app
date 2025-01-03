@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import CTA from "@/components/cta/cta";
 import Testimonial from "@/components/testimonial";
 import Footer from "@/components/footer/footer";
+import ReactQueryProvider from "@/components/react-query-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,14 +27,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <SmoothScrolling>
-          <NewsLetter />
-          <Navbar />
-          <main>{children}</main>
-          <Testimonial />
-          <CTA />
-          <Footer />
-        </SmoothScrolling>
+        <ReactQueryProvider>
+          <SmoothScrolling>
+            <NewsLetter />
+            <Navbar />
+            <main>{children}</main>
+            <Testimonial />
+            <CTA />
+            <Footer />
+          </SmoothScrolling>
+        </ReactQueryProvider>
       </body>
     </html>
   );

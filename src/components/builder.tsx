@@ -20,7 +20,7 @@ export function RenderBuilderContent({ content, model }: BuilderPageProps) {
   if (content || isPreviewing) {
     return (
       <BuilderComponent
-        // options={{ enrich: true }}
+        options={{ enrich: true }}
         content={content}
         model={model}
       />

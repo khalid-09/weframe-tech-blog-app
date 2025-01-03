@@ -11,6 +11,7 @@ const NewsLetter = async () => {
   } = (await builder.get("newsletter", {
     fields: "data.text",
     cachebust: true,
+    enrich: true,
   })) as AccouncementType;
 
   return (

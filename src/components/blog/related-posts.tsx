@@ -27,6 +27,8 @@ const RelatedPosts = ({ blogSelections = [] }: RelatedPostsProps) => {
         query: {
           id: { $in: blogIds },
         },
+        cachebust: true,
+        enrich: true,
       });
 
       const transformedFeatures = transformToNewBlogData(selectedBlogs);

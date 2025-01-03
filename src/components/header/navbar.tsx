@@ -16,6 +16,7 @@ const Navbar = async () => {
       createdDate: 1,
     },
     cachebust: true,
+    enrich: true,
     fields: "id,name,data",
   });
 

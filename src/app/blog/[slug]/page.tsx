@@ -79,6 +79,7 @@ export const generateStaticParams = async () => {
     sort: {
       createdDate: 1,
     },
+    enrich: true,
     fields: "id,name,data",
   });
 
